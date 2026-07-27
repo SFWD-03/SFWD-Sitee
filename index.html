@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ═══ CallRail Dynamic Number Insertion ═══ -->
-    <script src="//cdn.callrail.com/companies/404175059/fe82226f6f14cf2d567d/12/swap.js" type="text/javascript"></script>
-  
+  <!-- ═══ CallRail Dynamic Number Insertion ═══ -->
+  <script src="//cdn.callrail.com/companies/404175059/fe82226f6f14cf2d567d/12/swap.js" type="text/javascript"></script>
+
   <!-- ═══ Google Analytics 4 + Ads Conversion Tracking ═══
-       TODO: Replace G-3JH3NW9N7R with your GA4 Measurement ID
-       (GA4 Admin → Data Streams → click stream → Measurement ID)
-       TODO: Replace AW-XXXXXXXXX/XXXXX with your Google Ads conversion label
-       (Google Ads → Tools → Conversios → click conversion → Tag setup)
+       GA4 Measurement ID : G-3JH3NW9N7R
+       Google Ads ID      : AW-11049876137
+       Form submit label  : sQErCPXOsPobEKn1_pQp
+       Phone calls tracked via CallRail + Ads call extensions
   ═══════════════════════════════════════════════════════ -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JH3NW9N7R"></script>
   <script>
@@ -16,14 +16,14 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    // GA4 config — replace G-3JH3NW9N7R
+    // GA4
     gtag('config', 'G-3JH3NW9N7R', {
       page_title: document.title,
       page_location: window.location.href
     });
 
-    // Google Ads config — replace AW-XXXXXXXXX with your Conversion ID
-    gtag('config', 'AW-XXXXXXXXX');
+    // Google Ads
+    gtag('config', 'AW-11049876137');
 
     // ── Helper: track phone calls (fires on every tel: link click) ──
     function trackPhoneClick(source) {
@@ -32,10 +32,7 @@
         event_label: source || 'phone_link',
         value: 1
       });
-      // Also fire as Google Ads conversion
-      gtag('event', 'conversion', {
-        send_to: 'AW-XXXXXXXXX/PHONE_CALL_LABEL'
-      });
+      // Phone call conversions handled by CallRail + Google Ads call extensions
     }
 
     // ── Helper: track form submission as lead ──
@@ -48,7 +45,9 @@
       });
       // Fire as Google Ads conversion
       gtag('event', 'conversion', {
-        send_to: 'AW-XXXXXXXXX/FORM_SUBMIT_LABEL'
+        send_to: 'AW-11049876137/sQErCPXOsPobEKn1_pQp',
+        value: 1.0,
+        currency: 'USD'
       });
     }
 
@@ -3040,9 +3039,9 @@ p { line-height: 1.75; }
         <div class="eyebrow">Visit Us In Person</div>
         <h2 class="display mt-3" style="color:var(--navy)">See Our Showroom<br/><em>in Pompano Beach, FL.</em></h2>
         <div class="gold-rule"></div>
-        <p style="font-size:16px;line-height:1.8;color:var(--gray-700)">Our Pompano Beach showroom features full-size window and door displays so you can see — and feel — the quality before you buy. Touch the glass, operate the hardware, and compare frame styles side by side.</p>
+        <p style="font-size:16px;line-height:1.8;color:var(--gray-700)">Our Pompano Beach showroom features window and door samples so you can see — and feel — the quality before you buy. Touch the glass, operate the hardware, and compare frame styles side by side.</p>
         <ul style="list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700)"><span style="color:var(--gold);font-weight:700;margin-top:1px" style="color:var(--gold);font-size:13px;margin-right:8px">&#10003;</span> Full-size PGT &amp; CGI display windows and doors</li>
+          <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700)"><span style="color:var(--gold);font-weight:700;margin-top:1px" style="color:var(--gold);font-size:13px;margin-right:8px">&#10003;</span> PGT &amp; CGI window and door samples</li>
           <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700)"><span style="color:var(--gold);font-weight:700;margin-top:1px" style="color:var(--gold);font-size:13px;margin-right:8px">&#10003;</span> Compare frame colors, glass tints, and hardware finishes</li>
           <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700)"><span style="color:var(--gold);font-weight:700;margin-top:1px" style="color:var(--gold);font-size:13px;margin-right:8px">&#10003;</span> Speak directly with our installation team — no sales pressure</li>
           <li style="display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700)"><span style="color:var(--gold);font-weight:700;margin-top:1px" style="color:var(--gold);font-size:13px;margin-right:8px">&#10003;</span> Mon–Fri 9am–4pm</li>
@@ -3952,16 +3951,47 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Budget-Friendly Protection</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">The most cost-effective way to put Miami-Dade impact-rated glass on your home.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">More Natural Light, Better Curb Appeal</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Their clean, low-profile frame lets in more daylight and gives your home&#39;s exterior a polished, streamlined look — a small design detail that adds real visual value.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Easy to Clean</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">The lower sash tilts inward so you can wash both sides from inside.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Space-Saving Operation</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Because the sash slides up and down instead of swinging outward, single-hung windows are ideal near patios, porches, walkways, or tight outdoor spaces where an outward-opening window would get in the way.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Timeless Profile</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">A slim, classic frame that complements traditional and coastal architecture.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Energy Efficiency Without Compromise</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">With tinted and laminated glass options, single-hung windows help keep indoor temperatures steady year-round — cutting cooling costs while keeping your home comfortable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What does single-hung window mean?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">A single-hung window has a fixed top sash and a bottom sash that slides vertically to open. It&#39;s a simple, efficient design that&#39;s popular for adding natural light and ventilation without the added cost of more complex window styles.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What&#39;s the difference between single-hung and double-hung windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Single-hung windows only move at the bottom — the top sash stays fixed — giving you a straightforward, efficient option for light and airflow. Double-hung windows have two movable sashes, which allows for better ventilation control and easier interior cleaning, but typically comes at a slightly higher price due to the added hardware and complexity. Which one fits your home usually comes down to how much ventilation you need, how easy you want cleaning to be, and your budget.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Which is better, single-hung or double-hung windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">It depends on what matters most to you. Single-hung windows tend to be more budget-friendly and can offer strong energy efficiency thanks to their simpler design. Double-hung windows cost a bit more but offer greater airflow flexibility and easier cleaning — a better fit if functionality and convenience are top priorities.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do I adjust a single-hung window?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Start by checking the balance system, which keeps the sash moving smoothly and holding its position when open. Routine maintenance — cleaning the tracks, lubricating moving parts, and replacing worn spring balances when needed — keeps the window operating properly and extends its lifespan.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How much do single-hung windows cost?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Pricing depends on size, material, and features like energy-efficient glass or custom finishes. Single-hung windows are generally more affordable than double-hung windows because of their simpler construction, though premium options with upgraded features will cost more. For an accurate number, it&#39;s best to get a full quote — and factor in the warranty when comparing options, since that affects long-term value.</p>
         </div>
       </div>
     </div>
@@ -4023,16 +4053,43 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Top & Bottom Airflow</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Open both sashes to pull warm air out the top and draw cool air in below.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Superior Ventilation Control</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">With both sashes able to open, you can fine-tune how air moves through a room — drawing in cooler air from below while letting warm air escape up top. That means better indoor air quality and less strain on your AC system.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Cleans From Inside</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Both sashes tilt in — no ladders, ideal for second-story rooms.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Design Flexibility</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Double-hung windows adapt to almost any style, from traditional to modern, with a wide range of color, finish, and grid options. They also scale to fit the space — use standard sizes or combine units side by side to fill larger walls of glass.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Total Ventilation Control</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Fine-tune precisely how much fresh air enters any room.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Easy Interior Cleaning</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Both sashes tilt inward, letting you clean both sides of the glass from inside — no ladders needed, ideal for second-story rooms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What does double hung window mean?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Double hung windows consist of two sashes that move vertically, offering versatile ventilation options. This classic window design has been updated with modern features for improved functionality, including easy cleaning and enhanced energy efficiency. Double hung windows are popular for their adaptability to various architectural styles and their ability to provide controlled ventilation and natural light.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What are the sizes for double hung windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Double hung windows come in a wide range of sizes to fit any space. Standard sizes, like you&#39;d find in a typical bedroom, are 2 to 3 feet wide and 4 to 6 feet tall. For larger openings, you can hang them in pairs or even triples. Custom sizing options are also available, ensuring a perfect fit for unique window openings or specific design requirements.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Are double hung windows energy-efficient?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes, many modern double hung windows are designed with energy efficiency in mind. Features like double or triple-pane glass, Low-E coatings, and quality sealing technology minimize heat transfer, helping to keep your home comfortable year-round and significantly reduce your heating and cooling costs.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What&#39;s the difference between single and double hung windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">The primary difference is in the operation of the sashes. Double hung windows allow both the top and bottom sashes to move independently, providing greater flexibility in ventilation and easier cleaning access. Single hung windows have a fixed top sash and only the bottom sash is operable. Double hung windows offer more versatility, making them a preferred choice for many homeowners.</p>
         </div>
       </div>
     </div>
@@ -4094,16 +4151,39 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Airtight Seal</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Compression seals make casements among the most energy-efficient styles.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Maximum Ventilation, Unobstructed Views</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Because casement windows open fully outward, they capture more breeze and improve air circulation than sliding styles. With no center sash to break up the view, you get a clear, uninterrupted sightline — just add a screen to keep the fresh air in and the bugs out.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Full Ventilation</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">The entire opening swings clear for maximum airflow.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Effortless Operation</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">A simple crank means no lifting, pushing, or pulling to open the window — a real advantage in tight spaces or hard-to-reach areas. You can also choose which side the window hinges from, giving you control over airflow direction and a cleaner look for the room.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Clear Views</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">No center rail means unobstructed glass and clean sightlines.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Tighter Seal, Lower Energy Bills</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">When closed, casement windows compress into the frame for a snug seal that cuts down on air leakage. Combined with vinyl&#39;s natural UV resistance and insulating properties, this helps keep indoor temperatures stable and reduces strain on your heating and cooling system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What does the term casement window mean?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">A casement window is a window type that is attached to its frame by one or more hinges at the side. Casement windows are commonly operated by cranks that swing the window outward to open, making them particularly suitable for hard-to-reach places. They can open to the left or right, allowing for maximum versatility, ventilation, and natural light.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do casement windows open?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Casement windows open outward from the side hinges by turning a crank handle located at the window&#39;s base. This design allows for maximum ventilation and control over air flow, as the window can be opened partially or fully depending on the need. The outward opening also provides excellent accessibility for cleaning the exterior glass from inside.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you adjust casement windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Adjusting casement windows usually involves correcting issues with alignment, sealing, or operation. This might include tightening or loosening the hinge screws, aligning the window sash with the frame for a proper seal, or lubricating the crank mechanism for smoother operation. It&#39;s important to regularly check these aspects to ensure optimal performance.</p>
         </div>
       </div>
     </div>
@@ -4165,16 +4245,43 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Ventilate in the Rain</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">The outward-tilting sash sheds water while letting fresh air in.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Ventilation, Even in the Rain</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Because they open from the bottom while the top stays anchored, awning windows let you ventilate a room even during a light rain — the sash acts like a small awning, deflecting water away from the opening.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Private by Design</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Perfect placed high on a wall for light and airflow while keeping privacy.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Great for Hard-to-Reach or Compact Spaces</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Their compact profile makes awning windows a popular choice above or below other windows, in bathrooms, or in spaces where privacy and airflow both matter. They&#39;re often placed higher on a wall for light and ventilation without sacrificing privacy.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Tight Compression Seal</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Seals firmly when closed for excellent energy efficiency.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Energy Efficient by Design</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Like casement windows, awning windows compress into the frame for a tight seal when closed, helping reduce drafts and improve overall energy efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What does the term awning window mean?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">An awning window is a type of window that is hinged at the top, allowing it to open outward from the bottom. This design offers ventilation, wind resistance, and protection from rain and snow, making it ideal for various weather conditions. Its unique operation and versatility make it suitable for many areas in a home, enhancing airflow while maintaining privacy.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What are the most common awning window sizes?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Awning window sizes vary, but this style is generally on the small side and is wider than it is tall. The most common sizes range from 2 to 3.5 feet wide and 1.5 feet to 3 feet tall. These dimensions mean awning windows fit in a wide variety of spaces and can be stacked on top of each other, offering a flexibility other window styles can&#39;t.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Where should I use awning windows in my house?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Awning windows are best used in areas that require ventilation and light without compromising privacy. They are ideal for bathrooms, kitchens, and basements where direct airflow is desired. They also work well in mud rooms and laundry rooms as they can be placed high on the wall. Their ability to remain open during rain makes them perfect for South Florida&#39;s climate.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What&#39;s the difference between casement and awning windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">The main difference lies in their opening mechanism and orientation. Casement windows are hinged on the left or right side and open outward like a door, offering full top-to-bottom ventilation. Awning windows are hinged at the top and open outward from the bottom, providing ventilation with protection from the elements, making them suitable for many different applications.</p>
         </div>
       </div>
     </div>
@@ -4236,16 +4343,47 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Maximum Daylight</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">All glass, no moving parts — the brightest style we install.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Unmatched Views and Light</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">With no sash, frame divisions, or hardware interrupting the glass, picture windows offer the clearest, most expansive views available. They&#39;re a popular choice for showcasing scenic backdrops or filling a room with natural light.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Slim, Modern Frames</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Minimal framing for big, uninterrupted views.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Superior Energy Performance</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Because picture windows don&#39;t open, they seal completely into the frame — virtually eliminating air leakage and making them one of the most energy-efficient window styles available.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Best Energy Performance</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Fixed glass means no air infiltration and top efficiency.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Flexible Placement</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Picture windows are often paired with operable windows on either side, combining the view and light of a fixed pane with the ventilation of a casement, awning, or double-hung window nearby.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What is considered a picture window?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">A picture window is a large, fixed window that doesn&#39;t open or close, eliminating air leaks and improving energy efficiency. They&#39;re designed to offer wide, uninterrupted views and frame beautiful outdoor scenes, bringing in natural light and making spaces appear larger and more open. While you won&#39;t typically find picture windows that open, you can pair them with side windows if you need ventilation.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What are the standard sizes for picture windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Picture windows are extremely customizable — thanks to their fixed frame, they come in nearly any size. Typically, they start at about 24 inches in width, while large picture windows can extend up to or beyond 96 inches, with heights that can also vary greatly. This flexibility allows homeowners to choose the size that best fits their space and maximizes the intended effect.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you clean picture windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Cleaning picture windows is straightforward but requires careful attention due to their size. Start by dusting the frame and sill. Use a mixture of mild detergent and water or a vinegar-based solution for the glass. Apply with a soft sponge or cloth, then use a squeegee for a streak-free finish. For higher windows, a telescopic window cleaner can ensure safety while reaching tall areas.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How much do picture windows cost?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">The cost varies widely based on size, frame material, glass type, and whether customization is required. Prices generally start around $300 for smaller, standard models, while large picture windows with custom options can go up to $1,200 or more. Picture windows can enhance property value and reduce energy costs, making them a cost-effective choice in the long run.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What window dressing works best for large picture windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Sheer curtains are a popular choice because they softly filter sunlight and provide some privacy while still allowing for an outside view. Motorized shades are another excellent option, offering convenience and letting you easily control the amount of light entering the room. Both provide a sleek and contemporary look that complements the expansive glass of picture windows.</p>
         </div>
       </div>
     </div>
@@ -4307,16 +4445,70 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Made for Wide Openings</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Slides side-to-side where a vertical window won’t fit.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Light, Air, and Privacy</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Horizontal rollers let in generous natural light and fresh air while still giving you unobstructed outdoor views. Their larger openings also make them a smart fit for bedroom egress requirements in new construction, so they check the box on both style and code compliance.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Effortless Operation</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">No cranks or springs — just a smooth glide along the track.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Space-Saving Operation</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Since the sashes slide smoothly along a track rather than swinging outward, horizontal rollers work well in rooms facing walkways, porches, or patios — anywhere clearance is limited.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Nothing Swings Out</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Ideal along walkways, patios, and tight exterior spaces.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Energy Efficiency</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">The two sashes overlap where they meet in the middle, minimizing the gaps where conditioned air could escape. Paired with energy-efficient glass options, that tighter seal helps lower utility bills year-round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you replace sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Replacing a sliding window involves removing the existing frame and sash, prepping the rough opening, and fitting the new window in securely. Proper alignment and sealing are essential for energy efficiency and long-term performance, so we recommend having replacements handled by a professional installer.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you lock sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Most sliding windows use a latch lock built into the frame to secure the window when closed. For extra security, homeowners can add secondary locks — like pin locks, keyed locks, or security bars — for added protection against forced entry.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you seal sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">A well-sealed sliding window starts with weatherstripping in good condition — inspect it regularly and replace it if worn. Make sure the sash closes flush against the frame, and use a silicone-based sealant on any gaps between the window and the surrounding structure to block air and water infiltration.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you open horizontal sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Unlatch the lock, then apply gentle pressure to slide the sash left or right, depending on the window&#39;s design. Keeping the tracks clean and lubricated helps the window glide smoothly and prevents strain on the hardware.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you replace sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Replacing a sliding window involves removing the existing frame and sash, prepping the rough opening, and fitting the new window in securely. Proper alignment and sealing are essential for energy efficiency and long-term performance, so we recommend having replacements handled by a professional installer.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you lock sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Most sliding windows use a latch lock built into the frame to secure the window when closed. For extra security, homeowners can add secondary locks — like pin locks, keyed locks, or security bars — for added protection against forced entry.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you seal sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">A well-sealed sliding window starts with weatherstripping in good condition — inspect it regularly and replace it if worn. Make sure the sash closes flush against the frame, and use a silicone-based sealant on any gaps between the window and the surrounding structure to block air and water infiltration.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you open horizontal sliding windows?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Unlatch the lock, then apply gentle pressure to slide the sash left or right, depending on the window's design. Keeping the tracks clean and lubricated helps the window glide smoothly and prevents strain on the hardware.</p>
         </div>
       </div>
     </div>
@@ -4483,16 +4675,43 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Expansive Glass</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Wide openings and big views that connect indoors to out.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Space-Saving, Light-Maximizing Design</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Sliding glass doors have a clean, minimalist profile that opens up a room without taking up extra floor space. Available in configurations from two panels up to eight, they can make any living area feel larger and more open.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Space-Saving</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Panels slide instead of swinging — nothing intrudes on the room.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Energy Efficiency Built In</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">With options like warm-edge spacer systems and Low-E glass, sliding glass doors can meaningfully improve your home&#39;s energy performance and help lower utility bills.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Impact-Rated</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Laminated impact glass and heavy-duty tracks stand up to storms.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Storm-Ready Protection</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">For homes in hurricane-prone areas like South Florida, impact-resistant glass is available — combining the openness of a sliding glass door with the protection your home needs during severe weather.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How many panels can a sliding glass door have?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Sliding glass doors typically range from two-panel to multi-panel configurations, depending on the size of the opening and how much of the space you want to open at once.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Are sliding glass doors secure?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — most feature multi-point locking systems and reinforced frames. For added security, homeowners can also install auxiliary locks or security bars.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do you maintain a sliding glass door?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Keeping the tracks clean and free of debris helps the door glide smoothly. Periodic lubrication of the rollers and inspection of the weatherstripping helps maintain a tight seal and prevent air or water infiltration.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Can sliding glass doors be impact-resistant?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — impact-resistant glass options are available, offering the open, airy feel of a sliding door along with protection against severe weather.</p>
         </div>
       </div>
     </div>
@@ -4554,16 +4773,43 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Classic Elegance</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">A symmetrical, light-filled opening with timeless appeal.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Seamless Indoor-Outdoor Living</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Swinging French doors that open onto a deck or balcony let you merge indoor and outdoor spaces effortlessly — simply swing them open when entertaining to create one continuous living area.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Wide Opening</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Both panels open for an expansive, welcoming entrance.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Privacy with a View</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">For home offices or studies, swinging glass doors offer a great balance of privacy and connection — letting you close off a room while still keeping sightlines open to the space beyond.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Impact Protection</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Miami-Dade approved glass and multi-point locking hardware.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Timeless Beauty, Modern Protection</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Prized for centuries for their classic look, French doors are available with a variety of grid patterns and glass options — and every door we install is impact-rated for South Florida weather.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What&#39;s the difference between French doors and sliding glass doors?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">French doors swing open on hinges, creating a wide, unobstructed opening, while sliding glass doors glide along a track and take up less floor space when open. French doors offer a more traditional look, while sliding doors are often preferred for space efficiency.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Do French doors let in more light than other doors?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — with glass panels spanning nearly the full door, French doors let in significant natural light, often more than doors with smaller glass inserts.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Can French doors be used as exterior patio doors?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — French doors are a popular choice for patios and outdoor entryways, especially when homeowners want to merge indoor and outdoor living spaces or make a stylish design statement.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Are French doors secure?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — modern French doors use multi-point locking systems similar to other exterior doors, and impact-resistant glass options are available for added protection in severe weather.</p>
         </div>
       </div>
     </div>
@@ -4625,16 +4871,43 @@ p { line-height: 1.75; }
       </div>
       <div class="grid-3" style="margin-top:44px">
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Bold Curb Appeal</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Statement styles, glass options, and finishes that elevate your entry.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Security and Peace of Mind</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Built with reinforced frames and multi-point locking systems, entry doors provide a strong first line of defense for your home.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Serious Security</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Reinforced frames and multi-point locks resist forced entry.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Energy Efficiency</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Insulated cores and tight seals help entry doors keep conditioned air inside, reducing energy loss and improving comfort year-round.</p>
         </div>
         <div style="padding:32px 30px;background:#fff;border:1px solid var(--gray-100)">
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Storm-Rated</h3>
-          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">Impact glass and tight compression seals keep wind and water out.</p>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:1.25rem;font-weight:600;color:var(--navy)">Style That Makes a Statement</h3>
+          <p style="font-size:14px;font-weight:400;margin-top:8px;line-height:1.7">With a wide range of finishes, glass inserts, and hardware options, entry doors let you set the tone for your home&#39;s exterior while still delivering on performance and durability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow">
+      <div class="section-header centered text-center">
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="display mt-3">Frequently Asked Questions</h2>
+      </div>
+      <div style="margin-top:40px">
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">What is the best material for an entry door?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Fiberglass, steel, and wood are the most common options. Fiberglass offers excellent durability and low maintenance, steel provides strong security at a lower cost, and wood delivers a classic look but requires more upkeep. The right choice depends on your priorities around security, style, and maintenance.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Are entry doors energy efficient?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — quality entry doors are built with insulated cores and weatherstripped seals that reduce air leakage, helping keep conditioned air inside and lowering energy costs.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--gray-100);padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">How do I know what size entry door I need?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Standard entry doors typically range from 30 to 36 inches wide and 80 inches tall, but exact sizing depends on your existing frame and opening. A professional measurement ensures the right fit and proper installation.</p>
+        </div>
+        <div style="padding:28px 0">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0">Can entry doors be impact-resistant?</h3>
+          <p style="font-weight:400;line-height:1.75;margin-top:12px;color:var(--gray-700)">Yes — many entry doors are available with reinforced frames and impact-rated glass inserts, offering protection against hurricane-force winds and flying debris for homes in storm-prone areas.</p>
         </div>
       </div>
     </div>
@@ -4885,7 +5158,7 @@ p { line-height: 1.75; }
             <input type="hidden" name="bot-field" style="display:none"/>
             <div class="form-row-2">
               <div class="form-group"><label class="form-label">Full Name</label><input class="form-control" type="text" name="full-name" placeholder="Jane Smith" required/></div>
-              <div class="form-group"><label class="form-label">Phone Number</label><input class="form-control" type="tel" name="phone" placeholder="(954) 000-0000" required/></div>
+              <div class="form-group"><label class="form-label">Phone Number</label><input class="form-control" type="tel" name="phone" placeholder="(954) 241-3178" required/></div>
             </div>
             <div class="form-row-2">
               <div class="form-group"><label class="form-label">Email Address</label><input class="form-control" type="email" name="email" placeholder="jane@email.com" required/></div>
@@ -4901,26 +5174,6 @@ p { line-height: 1.75; }
                 <option>Showroom Visit</option>
                 <option>Other</option>
               </select>
-            </div>
-            <div class="form-row-2">
-              <div class="form-group"><label class="form-label">Preferred Day(s)</label>
-                <select class="form-control" name="preferred-day">
-                  <option value="">Please select...</option>
-                  <option>Monday</option>
-                  <option>Tuesday – Wednesday</option>
-                  <option>Thursday – Friday</option>
-                  <option>Any Day</option>
-                </select>
-              </div>
-              <div class="form-group"><label class="form-label">Number of Openings</label>
-                <select class="form-control" name="openings">
-                  <option value="">Please select...</option>
-                  <option>1–5</option>
-                  <option>6–15</option>
-                  <option>16–30</option>
-                  <option>30+</option>
-                </select>
-              </div>
             </div>
             <div class="form-group"><label class="form-label">Interested in Financing?</label>
               <select class="form-control" name="financing">
@@ -6367,7 +6620,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -6580,7 +6833,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -6793,7 +7046,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -7006,7 +7259,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -7219,7 +7472,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -7432,7 +7685,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -7645,7 +7898,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -7858,7 +8111,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -8071,7 +8324,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -8284,7 +8537,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 555-1234" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
@@ -8605,7 +8858,7 @@ p { line-height: 1.75; }
             </div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <label style="font-size:13px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Phone</label>
-              <input type="tel" name="phone" placeholder="(954) 000-0000" style="padding:13px 16px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px">
+              <input type="tel" name="phone" placeholder="(954) 241-3178" style="padding:13px 16px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px">
             </div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <label style="font-size:13px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Financing Option</label>
