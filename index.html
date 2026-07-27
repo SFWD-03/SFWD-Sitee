@@ -9284,6 +9284,7 @@ p { line-height: 1.75; }
               });
               document.getElementById('emp-form-wrap').style.display = 'none';
               document.getElementById('emp-thanks').style.display = 'block';
+              gtag('event', 'employment_application', { event_category: 'HR', event_label: 'employment_form', value: 1 });
               window.scrollTo(0, 0);
             } catch(err) {
               btn.disabled = false;
