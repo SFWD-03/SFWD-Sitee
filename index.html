@@ -5224,16 +5224,42 @@ p { line-height: 1.75; }
           document.getElementById('appointment-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const form = e.target;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.form-submit');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Submitting&hellip;';
+
             try {
-              await fetch('/', {
+              // Primary: send to Monday.com via Netlify function
+              await fetch('/.netlify/functions/submit-appointment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name:      formData.get('full-name'),
+                  phone:     formData.get('phone'),
+                  email:     formData.get('email'),
+                  zip:       formData.get('zip'),
+                  service:   formData.get('service'),
+                  financing: formData.get('financing'),
+                  message:   formData.get('message')
+                })
+              });
+
+              // Backup: also capture in Netlify Forms
+              fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(form)).toString()
-              });
+                body: new URLSearchParams(formData).toString()
+              }).catch(() => {}); // silent — Monday.com is the source of truth
+
               form.style.display = 'none';
               document.getElementById('form-success').style.display = 'block';
               trackFormSubmit('contact_page_form', 'general');
             } catch(err) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Submit Request &nbsp;&#8594;';
               alert('Something went wrong. Please call us at (954) 241-3178 or try again.');
             }
           });
