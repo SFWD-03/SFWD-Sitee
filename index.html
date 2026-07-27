@@ -1812,6 +1812,15 @@ a.footer-phone:hover { color: var(--gold); opacity: .8; }
   /* Hero */
   .hero { padding: 80px 0 60px; min-height: auto; }
   .hero-content { max-width: 100%; }
+
+  /* Hero creds bar: give it a solid navy bg so white text shows on mobile */
+  .hero-creds { background: var(--navy) !important; border-top: 1px solid rgba(255,255,255,.15) !important; }
+  .hero-creds-inner { height: auto !important; flex-wrap: wrap; padding: 12px 0; }
+  .hero-cred { flex: 0 0 50%; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,.1); padding: 10px 16px !important; justify-content: flex-start; gap: 8px; }
+  .hero-cred:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1) !important; }
+  .hero-cred:last-child { border-bottom: none; }
+  .hero-cred-label { color: rgba(255,255,255,.7) !important; font-size: 10px; }
+  .hero-cred-value { font-size: 12px !important; }
   .hero-content h1 { font-size: clamp(36px, 10vw, 56px); }
   .hero-content p { font-size: 15px; }
   .hero-actions { flex-direction: column; gap: 12px; align-items: flex-start; }
