@@ -59,6 +59,51 @@
       });
     }
 
+    // ── Scroll depth tracking (25 / 50 / 75 / 90%) ──
+    (function() {
+      var milestones = [25, 50, 75, 90], fired = {};
+      window.addEventListener('scroll', function() {
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (!docH) return;
+        var pct = Math.round((window.scrollY / docH) * 100);
+        milestones.forEach(function(m) {
+          if (pct >= m && !fired[m]) {
+            fired[m] = true;
+            gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: m + '%', value: m });
+          }
+        });
+      }, { passive: true });
+    })();
+
+    // ── Form start & abandonment tracking ──
+    (function() {
+      var started = {};
+      document.addEventListener('focusin', function(e) {
+        var form = e.target.closest('form');
+        if (!form) return;
+        var id = form.id || form.getAttribute('name') || 'form';
+        if (!started[id]) {
+          started[id] = true;
+          gtag('event', 'form_start', { event_category: 'Lead', event_label: id });
+        }
+      });
+      window.addEventListener('beforeunload', function() {
+        Object.keys(started).forEach(function(id) {
+          var form = document.getElementById(id) || document.querySelector('[name="' + id + '"]');
+          // Only fire abandonment if form wasn't submitted (check for thanks div visibility)
+          var submitted = false;
+          if (form) {
+            var thanksId = id.replace('-form', '-thanks').replace('_form', '-thanks');
+            var thanks = document.getElementById(thanksId);
+            if (thanks && thanks.style.display !== 'none') submitted = true;
+          }
+          if (!submitted) {
+            gtag('event', 'form_abandon', { event_category: 'Lead', event_label: id, transport_type: 'beacon' });
+          }
+        });
+      });
+    })();
+
     // ── Helper: submit service area form to Monday.com ──
     async function submitServiceAreaForm(e, wrapId, thanksId, city, formName) {
       e.preventDefault();
