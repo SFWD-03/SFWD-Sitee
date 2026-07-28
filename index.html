@@ -1946,6 +1946,66 @@ html, body { overflow-x: hidden; }
   div[style*="padding: 80px 32px"] {
     padding: 48px 20px !important;
   }
+
+  /* ── Hurricane season banner: stack timer below text ── */
+  div[style*="grid-template-columns:1fr auto"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  div[style*="min-width:300px"] {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  #hc-days, #hc-hours, #hc-mins {
+    min-width: 56px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* ── Page heroes: 62%/38% split → single column ── */
+  section.page-hero[style*="62%"] {
+    grid-template-columns: 1fr !important;
+    height: 280px !important;
+  }
+
+  /* ── Page heroes: 1.1fr/.9fr split → single column, hide decorative panel ── */
+  section.page-hero[style*="1.1fr"] {
+    grid-template-columns: 1fr !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 48px 20px !important;
+    gap: 0 !important;
+  }
+  section.page-hero[style*="1.1fr"] > div:last-child {
+    display: none !important;
+  }
+  section.page-hero[style*="1.1fr"] > div:first-child {
+    padding: 0 !important;
+  }
+
+  /* ── 4-column inline grids → 2 columns ── */
+  [style*="repeat(4,1fr)"] {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+
+  /* ── 5-column comparison grid → scrollable ── */
+  [style*="repeat(5,1fr)"] {
+    grid-template-columns: repeat(2,1fr) !important;
+    overflow-x: auto !important;
+  }
+
+  /* ── Large gap inline grids ── */
+  div[style*="gap:64px"] {
+    gap: 28px !important;
+  }
+  div[style*="gap:56px"] {
+    gap: 24px !important;
+  }
+
+  /* ── Nav dropdown min-width ── */
+  #nav-doors-dropdown {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
 }
 
 
