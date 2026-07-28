@@ -2,7 +2,7 @@
 // Creates items in the Monday.com "Website Form Submissions" board (ID: 18423966879)
 //
 // Required environment variable in Netlify:
-//   MONDAY_API_TOKEN  -- your Monday.com API v2 token
+//   MONDAY_API_TOKEN  — your Monday.com API v2 token
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -11,7 +11,7 @@ exports.handler = async (event) => {
 
   try {
     const data = JSON.parse(event.body);
-    const { name, phone, email, zip, service, financing, message } = data;
+    const { name, phone, email, zip, service, financing, message, city } = data;
 
     if (!name || !phone || !email) {
       return {
@@ -21,17 +21,30 @@ exports.handler = async (event) => {
     }
 
     const cleanPhone = phone.replace(/\D/g, '');
+    const itemName = city ? `${name} — ${city}` : name;
 
     const columnValues = JSON.stringify({
       phone_mm5npava:     { phone: cleanPhone, countryShortName: 'US' },
       email_mm5nxjdw:     { email: email, text: email },
       text_mm5nx4aj:      service   || '',
       text_mm5ne5cy:      financing || '',
-      text_mm5nf7cj:      zip       || '',
+      text_mm5nf7cj:      zip || city || '',
       long_text_mm5nzxkg: { text: message || '' }
     });
 
-    const mutation = 'mutation { create_item(board_id: 18423966879, group_id: "topics", item_name: ' + JSON.stringify(name) + ', column_values: ' + JSON.stringify(columnValues) + ') { id name } }';
+    const mutation = `
+      mutation {
+        create_item(
+          board_id: 18423966879,
+          group_id: "topics",
+          item_name: ${JSON.stringify(itemName)},
+          column_values: ${JSON.stringify(columnValues)}
+        ) {
+          id
+          name
+        }
+      }
+    `;
 
     const response = await fetch('https://api.monday.com/v2', {
       method: 'POST',
@@ -63,6 +76,9 @@ exports.handler = async (event) => {
 
   } catch (err) {
     console.error('Function error:', err);
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message })
+    };
   }
 };
