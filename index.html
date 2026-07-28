@@ -58,6 +58,62 @@
         event_label: label || 'cta'
       });
     }
+
+    // ── Helper: submit service area form to Monday.com ──
+    async function submitServiceAreaForm(e, wrapId, thanksId, city, formName) {
+      e.preventDefault();
+      const form = e.target;
+      const firstName = form.querySelector('[name="firstName"]').value.trim();
+      const lastName = form.querySelector('[name="lastName"]').value.trim();
+      const phone = form.querySelector('[name="phone"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      const service = form.querySelector('[name="service"]') ? form.querySelector('[name="service"]').value : '';
+      const message = form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value : '';
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Sending&hellip;'; }
+      try {
+        const res = await fetch('/.netlify/functions/submit-appointment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: (firstName + ' ' + lastName).trim(), phone, email, service, message, city })
+        });
+        if (!res.ok) throw new Error('Server error');
+        document.getElementById(wrapId).style.display = 'none';
+        document.getElementById(thanksId).style.display = 'block';
+        trackFormSubmit(formName, city);
+      } catch(err) {
+        if (btn) { btn.disabled = false; btn.innerHTML = 'Send My Request &nbsp;&#8594;'; }
+        alert('Something went wrong. Please call us at (954) 241-3178 or try again.');
+      }
+    }
+
+    // ── Helper: submit financing form to Monday.com ──
+    async function submitFinancingForm(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('[name="name"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      const phone = form.querySelector('[name="phone"]').value.trim();
+      const financing = form.querySelector('[name="financing_option"]') ? form.querySelector('[name="financing_option"]').value : '';
+      const message = form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value : '';
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Sending&hellip;'; }
+      try {
+        const res = await fetch('/.netlify/functions/submit-appointment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, email, financing, message, city: 'Financing Inquiry' })
+        });
+        if (!res.ok) throw new Error('Server error');
+        form.style.display = 'none';
+        const thanks = document.getElementById('financing-thanks');
+        if (thanks) thanks.style.display = 'block';
+        trackFormSubmit('financing_form', 'Financing Inquiry');
+      } catch(err) {
+        if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.originalText || 'Submit'; }
+        alert('Something went wrong. Please call us at (954) 241-3178 or try again.');
+      }
+    }
   </script>
 
 <meta charset="UTF-8"/>
@@ -6721,32 +6777,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Boca Raton specialist will follow up within 1 business day.</p>
 
           <div id="sa-boca-raton-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-boca-raton-form-wrap').style.display='none'; document.getElementById('sa-boca-raton-thanks').style.display='block'; trackFormSubmit('sa_boca_raton_form', 'Boca Raton'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-boca-raton-form-wrap','sa-boca-raton-thanks','Boca Raton','sa_boca_raton_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -6759,7 +6815,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -6934,32 +6990,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Coral Springs specialist will follow up within 1 business day.</p>
 
           <div id="sa-coral-springs-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-coral-springs-form-wrap').style.display='none'; document.getElementById('sa-coral-springs-thanks').style.display='block'; trackFormSubmit('sa_coral_springs_form', 'Coral Springs'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-coral-springs-form-wrap','sa-coral-springs-thanks','Coral Springs','sa_coral_springs_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -6972,7 +7028,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -7147,32 +7203,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Boynton Beach specialist will follow up within 1 business day.</p>
 
           <div id="sa-boynton-beach-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-boynton-beach-form-wrap').style.display='none'; document.getElementById('sa-boynton-beach-thanks').style.display='block'; trackFormSubmit('sa_boynton_beach_form', 'Boynton Beach'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-boynton-beach-form-wrap','sa-boynton-beach-thanks','Boynton Beach','sa_boynton_beach_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -7185,7 +7241,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -7360,32 +7416,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Pompano Beach specialist will follow up within 1 business day.</p>
 
           <div id="sa-pompano-beach-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-pompano-beach-form-wrap').style.display='none'; document.getElementById('sa-pompano-beach-thanks').style.display='block'; trackFormSubmit('sa_pompano_beach_form', 'Pompano Beach'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-pompano-beach-form-wrap','sa-pompano-beach-thanks','Pompano Beach','sa_pompano_beach_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -7398,7 +7454,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -7573,32 +7629,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Fort Lauderdale specialist will follow up within 1 business day.</p>
 
           <div id="sa-fort-lauderdale-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-fort-lauderdale-form-wrap').style.display='none'; document.getElementById('sa-fort-lauderdale-thanks').style.display='block'; trackFormSubmit('sa_fort_lauderdale_form', 'Fort Lauderdale'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-fort-lauderdale-form-wrap','sa-fort-lauderdale-thanks','Fort Lauderdale','sa_fort_lauderdale_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -7611,7 +7667,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -7786,32 +7842,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Hollywood specialist will follow up within 1 business day.</p>
 
           <div id="sa-hollywood-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-hollywood-form-wrap').style.display='none'; document.getElementById('sa-hollywood-thanks').style.display='block'; trackFormSubmit('sa_hollywood_form', 'Hollywood'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-hollywood-form-wrap','sa-hollywood-thanks','Hollywood','sa_hollywood_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -7824,7 +7880,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -7999,32 +8055,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A West Palm Beach specialist will follow up within 1 business day.</p>
 
           <div id="sa-west-palm-beach-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-west-palm-beach-form-wrap').style.display='none'; document.getElementById('sa-west-palm-beach-thanks').style.display='block'; trackFormSubmit('sa_west_palm_beach_form', 'West Palm Beach'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-west-palm-beach-form-wrap','sa-west-palm-beach-thanks','West Palm Beach','sa_west_palm_beach_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -8037,7 +8093,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -8212,32 +8268,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Deerfield Beach specialist will follow up within 1 business day.</p>
 
           <div id="sa-deerfield-beach-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-deerfield-beach-form-wrap').style.display='none'; document.getElementById('sa-deerfield-beach-thanks').style.display='block'; trackFormSubmit('sa_deerfield_beach_form', 'Deerfield Beach'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-deerfield-beach-form-wrap','sa-deerfield-beach-thanks','Deerfield Beach','sa_deerfield_beach_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -8250,7 +8306,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -8425,32 +8481,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Delray Beach specialist will follow up within 1 business day.</p>
 
           <div id="sa-delray-beach-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-delray-beach-form-wrap').style.display='none'; document.getElementById('sa-delray-beach-thanks').style.display='block'; trackFormSubmit('sa_delray_beach_form', 'Delray Beach'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-delray-beach-form-wrap','sa-delray-beach-thanks','Delray Beach','sa_delray_beach_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -8463,7 +8519,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -8638,32 +8694,32 @@ p { line-height: 1.75; }
           <p style="font-size:13px;color:var(--gray-500);margin-bottom:28px">A Lake Worth specialist will follow up within 1 business day.</p>
 
           <div id="sa-lake-worth-form-wrap">
-            <form onsubmit="(function(e){ e.preventDefault(); document.getElementById('sa-lake-worth-form-wrap').style.display='none'; document.getElementById('sa-lake-worth-thanks').style.display='block'; trackFormSubmit('sa_lake_worth_form', 'Lake Worth'); })(event)" style="display:flex;flex-direction:column;gap:16px">
+            <form onsubmit="submitServiceAreaForm(event,'sa-lake-worth-form-wrap','sa-lake-worth-thanks','Lake Worth','sa_lake_worth_form')" style="display:flex;flex-direction:column;gap:16px">
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">First Name *</label>
-                  <input type="text" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="firstName" required placeholder="Jane" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
                 <div>
                   <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Last Name *</label>
-                  <input type="text" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                  <input type="text" name="lastName" required placeholder="Smith" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
                 </div>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Phone Number *</label>
-                <input type="tel" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="tel" name="phone" required placeholder="(954) 241-3178" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Email Address *</label>
-                <input type="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
+                <input type="email" name="email" required placeholder="jane@example.com" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"/>
               </div>
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Service Needed</label>
-                <select style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
+                <select name="service" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;background:white;color:#333;-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2212%22 height%3D%2212%22 viewBox%3D%220 0 12 12%22%3E%3Cpath fill%3D%22%23555%22 d%3D%22M6 8L1 3h10z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right 14px center">
                   <option value="">Select a service…</option>
                   <option>Impact Windows – Residential</option>
                   <option>Impact Doors – Residential</option>
@@ -8676,7 +8732,7 @@ p { line-height: 1.75; }
 
               <div>
                 <label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:6px">Tell Us About Your Project</label>
-                <textarea placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
+                <textarea name="message" placeholder="e.g. 3-bedroom home, replacing 8 windows and 2 doors…" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #E0E0E0;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#E0E0E0'"></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:14px;letter-spacing:.06em;margin-top:4px">Send My Request &rarr;</button>
@@ -8963,7 +9019,7 @@ p { line-height: 1.75; }
           <h2 style="color:#fff;margin:0 0 8px;text-align:center">Ask About Financing</h2>
           <p style="color:rgba(255,255,255,.7);text-align:center;margin-bottom:36px">We offer our customers several available options for financing. Fill out the form below or call us for more information.</p>
 
-          <form id="financing-form" name="financing" data-netlify="true" onsubmit="(function(e){ e.preventDefault(); document.getElementById('financing-form').style.display='none'; document.getElementById('financing-thanks').style.display='block'; trackFormSubmit('financing_form','general'); })(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <form id="financing-form" onsubmit="submitFinancingForm(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
             <div style="display:flex;flex-direction:column;gap:6px">
               <label style="font-size:13px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Full Name</label>
               <input type="text" name="name" required placeholder="Your full name" style="padding:13px 16px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px">
