@@ -23,13 +23,17 @@ exports.handler = async (event) => {
     const cleanPhone = phone.replace(/\D/g, '');
     const itemName = city ? `${name} — ${city}` : name;
 
+    const now = new Date();
+    const submittedDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
+
     const columnValues = JSON.stringify({
       phone_mm5npava:     { phone: cleanPhone, countryShortName: 'US' },
       email_mm5nxjdw:     { email: email, text: email },
       text_mm5nx4aj:      service   || '',
       text_mm5ne5cy:      financing || '',
       text_mm5nf7cj:      zip || city || '',
-      long_text_mm5nzxkg: { text: message || '' }
+      long_text_mm5nzxkg: { text: message || '' },
+      date_mm5w1cqp:      { date: submittedDate }
     });
 
     const mutation = `
