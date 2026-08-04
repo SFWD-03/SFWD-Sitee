@@ -1,8 +1,45 @@
 // Netlify Serverless Function: submit-appointment.js
-// Creates items in the Monday.com "Website Form Submissions" board (ID: 18423966879)
+// Posts to TWO Monday.com boards on every website form submission:
+//   1. "Website Form Submissions" (ID: 18423966879) — tracking/archive
+//   2. "Request An Appointment"   (ID: 4546344839)  — active sales pipeline
 //
 // Required environment variable in Netlify:
 //   MONDAY_API_TOKEN  — your Monday.com API v2 token
+
+const MONDAY_API = 'https://api.monday.com/v2';
+const MONDAY_HEADERS = () => ({
+  'Content-Type': 'application/json',
+  'Authorization': process.env.MONDAY_API_TOKEN,
+  'API-Version': '2024-01'
+});
+
+async function createMondayItem(boardId, groupId, itemName, columnValues) {
+  const mutation = `
+    mutation {
+      create_item(
+        board_id: ${boardId},
+        group_id: "${groupId}",
+        item_name: ${JSON.stringify(itemName)},
+        column_values: ${JSON.stringify(JSON.stringify(columnValues))}
+      ) {
+        id
+        name
+      }
+    }
+  `;
+
+  const response = await fetch(MONDAY_API, {
+    method: 'POST',
+    headers: MONDAY_HEADERS(),
+    body: JSON.stringify({ query: mutation })
+  });
+
+  const result = await response.json();
+  if (result.errors) {
+    throw new Error(`Monday API error (board ${boardId}): ${JSON.stringify(result.errors)}`);
+  }
+  return result.data.create_item;
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -22,11 +59,10 @@ exports.handler = async (event) => {
 
     const cleanPhone = phone.replace(/\D/g, '');
     const itemName = city ? `${name} — ${city}` : name;
+    const submittedDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-    const now = new Date();
-    const submittedDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-
-    const columnValues = JSON.stringify({
+    // ── Board 1: Website Form Submissions (archive/tracking) ──────────────────
+    const submissionsColumns = {
       phone_mm5npava:     { phone: cleanPhone, countryShortName: 'US' },
       email_mm5nxjdw:     { email: email, text: email },
       text_mm5nx4aj:      service   || '',
@@ -34,47 +70,43 @@ exports.handler = async (event) => {
       text_mm5nf7cj:      zip || city || '',
       long_text_mm5nzxkg: { text: message || '' },
       date_mm5w1cqp:      { date: submittedDate }
-    });
+    };
 
-    const mutation = `
-      mutation {
-        create_item(
-          board_id: 18423966879,
-          group_id: "topics",
-          item_name: ${JSON.stringify(itemName)},
-          column_values: ${JSON.stringify(columnValues)}
-        ) {
-          id
-          name
-        }
-      }
-    `;
+    // ── Board 2: Request An Appointment (active pipeline) ─────────────────────
+    // label1 id 12 = "Website"  |  status id 5 = "NEW"
+    const appointmentColumns = {
+      phone7:              { phone: cleanPhone, countryShortName: 'US' },
+      email:               { email: email, text: email },
+      text_mm5pqa4p:       zip || city || '',
+      long_text_mm5pqrpc:  { text: message || '' },
+      text_mm5pzf7y:       financing || '',
+      text_1:              service   || '',   // "Is there anything else..." — carries Service Interest
+      label1:              { index: 12 },     // How did you hear about us? → Website
+      status:              { index: 5  }      // Status → NEW
+    };
 
-    const response = await fetch('https://api.monday.com/v2', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': process.env.MONDAY_API_TOKEN,
-        'API-Version': '2024-01'
-      },
-      body: JSON.stringify({ query: mutation })
-    });
-
-    const result = await response.json();
-
-    if (result.errors) {
-      console.error('Monday API error:', JSON.stringify(result.errors));
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Monday.com API error', details: result.errors })
-      };
-    }
+    // Fire both requests in parallel
+    const [submissionsItem, appointmentItem] = await Promise.all([
+      createMondayItem(
+        18423966879,
+        'topics',
+        itemName,
+        submissionsColumns
+      ),
+      createMondayItem(
+        4546344839,
+        'duplicate_of_new_calls38643', // "New Calls" group
+        itemName,
+        appointmentColumns
+      )
+    ]);
 
     return {
       statusCode: 200,
       body: JSON.stringify({
         success: true,
-        item_id: result.data && result.data.create_item && result.data.create_item.id
+        submissions_item_id:  submissionsItem.id,
+        appointment_item_id:  appointmentItem.id
       })
     };
 
