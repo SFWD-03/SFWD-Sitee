@@ -1937,9 +1937,12 @@ a.footer-phone:hover { color: var(--gold); opacity: .8; }
   .hero-actions { flex-direction: column; gap: 12px; align-items: flex-start; }
   .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
 
-  /* Page hero */
-  .page-hero { height: 260px !important; }
-  .page-hero-content h1 { font-size: clamp(28px, 8vw, 42px); }
+  /* Page hero — let height be driven by content on mobile */
+  .page-hero { height: auto !important; min-height: 0 !important; overflow: visible !important; padding: 40px 0 !important; }
+  .page-hero-content { padding-bottom: 0 !important; }
+  .page-hero-content h1 { font-size: clamp(26px, 7vw, 36px) !important; }
+  /* Reduce the large .display font in dark page heroes */
+  .page-hero .display { font-size: clamp(26px, 7vw, 36px) !important; line-height: 1.2 !important; }
 
   /* Sections */
   .section { padding: 48px 0; }
@@ -2073,10 +2076,21 @@ html, body { overflow-x: hidden; }
     padding: 10px 12px !important;
   }
 
-  /* ── Page heroes: 62%/38% split → single column ── */
+  /* ── Page heroes: 62%/38% split → single column, auto height ── */
   section.page-hero[style*="62%"] {
-    grid-template-columns: 1fr !important;
-    height: 280px !important;
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  /* Content pane: mobile-friendly padding, stack top-down */
+  section.page-hero[style*="62%"] > div > div:first-child {
+    padding: 40px 20px 44px !important;
+    justify-content: flex-start !important;
+  }
+  /* Image pane: hide on mobile */
+  section.page-hero[style*="62%"] > div > div:last-child {
+    display: none !important;
   }
 
   /* ── Page heroes: 1.1fr/.9fr split → single column, hide decorative panel ── */
@@ -2117,6 +2131,36 @@ html, body { overflow-x: hidden; }
   #nav-doors-dropdown {
     min-width: 0 !important;
     width: 100% !important;
+  }
+
+  /* ── Split content panes: reduce 15% lateral padding ── */
+  .split-content-pane {
+    padding: 48px 24px !important;
+  }
+
+  /* ── Inline navy/dark CTA boxes with heavy padding ── */
+  div[style*="padding:48px"] {
+    padding: 32px 20px !important;
+  }
+  div[style*="padding: 48px"] {
+    padding: 32px 20px !important;
+  }
+
+  /* ── Blog/article grids with minmax(340px) ── */
+  [style*="minmax(340px"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Card inner padding reduction on mobile */
+  div[style*="padding:32px 36px"] {
+    padding: 24px 20px !important;
+  }
+  div[style*="padding: 32px 36px"] {
+    padding: 24px 20px !important;
+  }
+
+  /* ── Referral / earn pane split: ensure stacks ── */
+  .split-section.has-two-panes {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -2808,6 +2852,30 @@ p { line-height: 1.75; }
       </div>
     </section>
   </div>
+
+  <!-- PGT SUMMER SAVINGS — AUGUST 2026 ONLY. REMOVE AFTER AUG 31 -->
+  <section style="background:#fff;padding:56px 0;border-top:4px solid #CC1820;border-bottom:1px solid #eee">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:36px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#CC1820;margin-bottom:10px">Limited-Time Offer · Orders Must Be Placed By August 31, 2026</div>
+        <h2 style="font-size:clamp(24px,4vw,36px);font-weight:800;color:#081E38;margin-bottom:0">PGT Summer Savings Rebate</h2>
+      </div>
+      <div style="display:flex;gap:28px;align-items:flex-start;justify-content:center;flex-wrap:wrap">
+        <div style="flex:0 0 auto;max-width:360px;width:100%">
+          <img src="pgt-rebate-flyer-1.png" alt="PGT Summer Savings — Invest in your view, get rewarded. Up to $100 rebate per unit." style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.18);display:block"/>
+        </div>
+        <div style="flex:0 0 auto;max-width:360px;width:100%">
+          <img src="pgt-rebate-flyer-2.png" alt="How to claim your PGT rebate in 3 easy steps" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.18);display:block"/>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <button onclick="showPage('contact')" class="btn btn-gold" style="font-size:15px;padding:16px 36px">Get a Free Quote &amp; Claim Your Rebate</button>
+        <a href="pgt-rebate-guidelines.pdf" download class="btn btn-navy" style="font-size:15px;padding:16px 36px">Download Flyer</a>
+      </div>
+      <p style="text-align:center;font-size:11px;color:#aaa;margin-top:16px">Savings issued as electronic gift cards. Register by Nov 24, 2026 at pgtwindows.com/summersavings · Code: SUMMERSAVINGS2026</p>
+    </div>
+  </section>
+  <!-- END PGT SUMMER SAVINGS -->
 
   <!-- STATS BAR -->
   <div class="stats-bar">
