@@ -550,12 +550,12 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--gray-200);
+  border-bottom: 3px solid #C9A84C;
   box-shadow: 0 2px 16px rgba(0,0,0,.07);
 }
 .nav-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 84px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  height: 104px;
 }
 .logo {
   display: flex; flex-direction: row;
@@ -563,7 +563,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
   cursor: pointer; flex-shrink: 0;
 }
 .logo-img {
-  height: 72px; width: auto; flex-shrink: 0;
+  height: 90px; width: auto; flex-shrink: 0;
 }
 .logo-text-wrap {
   display: flex; flex-direction: column; gap: 2px;
@@ -604,7 +604,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
   font-style: normal;
 }
 .nav-links {
-  display: flex; align-items: center; gap: 0; flex-wrap: nowrap; overflow: visible;
+  display: flex; align-items: center; gap: 0; flex-wrap: nowrap; overflow: visible; justify-content: flex-end;
 }
 .nav-links a {
   padding: 6px 10px;
@@ -869,8 +869,45 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 /* Picture: fixed window — subtle glow/scale */
 .nav-dd-style-item:hover .pic-inner { transform: scale(1.06); transform-origin: center; }
 .nav-right {
-  display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  display: flex; align-items: center; gap: 0; flex-shrink: 0; justify-content: flex-start;
 }
+.nav-right a {
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+.nav-right a::after {
+  content: '';
+  position: absolute; bottom: 2px; left: 9px; right: 9px;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transition: var(--transition);
+}
+.nav-right a:hover { color: var(--navy); }
+.nav-right a:hover::after { transform: scaleX(1); }
+.nav-cta-btn {
+  background: #C9A84C;
+  color: #fff !important;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 3px;
+  transition: background .2s;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.nav-cta-btn:hover { background: #b8963d; }
 .nav-phone-sm {
   font-size: 12px;
   font-weight: 600;
@@ -2582,11 +2619,6 @@ p { line-height: 1.75; }
 <header class="site-header">
   <div class="container">
     <nav class="nav-inner">
-           <div class="logo" onclick="showPage('home')">
-        <img src="wad_white_removebg_preview_wu3s744g4ulsahtszzctl-661x377.webp"
-             alt="South Florida Windows &amp; Doors"
-             class="logo-img">
-      </div>
       <div class="nav-links">
         <a onclick="showPage('home')"       id="nav-home"       class="active">Home</a>
         <div class="nav-windows-wrap" id="nav-windows-wrap">
@@ -2788,12 +2820,19 @@ p { line-height: 1.75; }
             </div>
           </div>
         </div>
+      </div>
+      <div class="logo" onclick="showPage('home')">
+        <img src="wad_white_removebg_preview_wu3s744g4ulsahtszzctl-661x377.webp"
+             alt="South Florida Windows &amp; Doors"
+             class="logo-img">
+      </div>
+      <div class="nav-right">
         <a onclick="showPage('commercial')" id="nav-commercial">Commercial</a>
         <a onclick="showPage('financing')"  id="nav-financing">Financing</a>
         <a onclick="showPage('service-areas')" id="nav-service-areas">Service Areas</a>
         <div class="nav-more-wrap" style="position:relative">
           <a class="nav-more-btn" onclick="toggleNavMore(event)" style="display:flex;align-items:center;gap:4px">More ▾</a>
-          <div id="nav-more-dropdown" style="display:none;position:absolute;top:100%;left:0;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,.12);border-radius:8px;min-width:160px;padding:8px 0;z-index:999">
+          <div id="nav-more-dropdown" style="display:none;position:absolute;top:100%;right:0;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,.12);border-radius:8px;min-width:160px;padding:8px 0;z-index:999">
             <a onclick="showPage('about');closeNavMore()"      style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);white-space:nowrap">About Us</a>
             <a onclick="showPage('wholesale');closeNavMore()"  style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);white-space:nowrap">Wholesale</a>
             <a onclick="showPage('reviews');closeNavMore()"    style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);white-space:nowrap">Reviews</a>
@@ -2802,9 +2841,7 @@ p { line-height: 1.75; }
           </div>
         </div>
         <a onclick="showPage('contact')"    id="nav-contact">Contact</a>
-      </div>
-      <div class="nav-right">
-        <button onclick="showPage('contact')" style="background:none;border:none;cursor:pointer;padding:6px 10px;font-size:10px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-600);font-family:'Montserrat', sans-serif;transition:color .2s" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--gray-600)'">Request Appointment</button>
+        <button onclick="showPage('contact');trackCTA('header_cta')" class="nav-cta-btn">Request Appointment</button>
       </div>
       <button class="hamburger" id="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
