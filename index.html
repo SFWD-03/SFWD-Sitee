@@ -2162,6 +2162,38 @@ html, body { overflow-x: hidden; }
   .split-section.has-two-panes {
     grid-template-columns: 1fr !important;
   }
+
+  /* ── Commercial client grid: collapse to 1 column ── */
+  .client-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .client-item {
+    border-right: none !important;
+    border-bottom: 1px solid var(--gray-100) !important;
+  }
+  .client-item[style*="border-bottom:none"] {
+    border-bottom: none !important;
+  }
+
+  /* ── Process steps: 4 cols → single col ── */
+  .process-row {
+    grid-template-columns: 1fr !important;
+  }
+  .process-step {
+    border-right: none !important;
+    border-bottom: 1px solid var(--gray-100) !important;
+  }
+  .process-step:last-child {
+    border-bottom: none !important;
+  }
+
+  /* ── Service areas: side-by-side → single col, hide divider ── */
+  .areas-grouped {
+    grid-template-columns: 1fr !important;
+  }
+  .areas-divider {
+    display: none !important;
+  }
 }
 
 
