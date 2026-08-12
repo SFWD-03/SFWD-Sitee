@@ -10339,10 +10339,50 @@ window.addEventListener('popstate', function(e) {
   _activatePage(id);
 });
 
-// On first load, set initial state and handle hash in URL
+// On first load, set initial state — supports hash (#windows) AND path (/windows/) routing
 (function() {
   const hash = location.hash.replace('#', '');
-  const startPage = (hash && pages.includes(hash)) ? hash : 'home';
+  const pathToPage = {
+    '/windows': 'windows', '/windows/': 'windows',
+    '/impact-windows': 'hurricane-impact-windows', '/impact-windows/': 'hurricane-impact-windows',
+    '/custom/windows': 'windows', '/custom/windows/': 'windows',
+    '/aluminum/windows': 'windows', '/aluminum/windows/': 'windows',
+    '/doors': 'doors', '/doors/': 'doors',
+    '/doors/sliding-glass': 'door-sliding-glass', '/doors/sliding-glass/': 'door-sliding-glass',
+    '/doors/french': 'door-french', '/doors/french/': 'door-french',
+    '/doors/entry': 'door-entry', '/doors/entry/': 'door-entry',
+    '/windows/single-hung': 'window-single-hung', '/windows/single-hung/': 'window-single-hung',
+    '/windows/double-hung': 'window-double-hung', '/windows/double-hung/': 'window-double-hung',
+    '/windows/casement': 'window-casement', '/windows/casement/': 'window-casement',
+    '/windows/awning': 'window-awning', '/windows/awning/': 'window-awning',
+    '/windows/picture': 'window-picture', '/windows/picture/': 'window-picture',
+    '/windows/horizontal-roller': 'window-horizontal-roller', '/windows/horizontal-roller/': 'window-horizontal-roller',
+    '/commercial': 'commercial', '/commercial/': 'commercial',
+    '/contact': 'contact', '/contact/': 'contact',
+    '/service-areas': 'service-areas', '/service-areas/': 'service-areas',
+    '/service-areas/boca-raton': 'sa-boca-raton', '/service-areas/boca-raton/': 'sa-boca-raton',
+    '/service-areas/pompano-beach': 'sa-pompano-beach', '/service-areas/pompano-beach/': 'sa-pompano-beach',
+    '/service-areas/coral-springs': 'sa-coral-springs', '/service-areas/coral-springs/': 'sa-coral-springs',
+    '/service-areas/boynton-beach': 'sa-boynton-beach', '/service-areas/boynton-beach/': 'sa-boynton-beach',
+    '/service-areas/fort-lauderdale': 'sa-fort-lauderdale', '/service-areas/fort-lauderdale/': 'sa-fort-lauderdale',
+    '/service-areas/hollywood': 'sa-hollywood', '/service-areas/hollywood/': 'sa-hollywood',
+    '/service-areas/west-palm-beach': 'sa-west-palm-beach', '/service-areas/west-palm-beach/': 'sa-west-palm-beach',
+    '/service-areas/deerfield-beach': 'sa-deerfield-beach', '/service-areas/deerfield-beach/': 'sa-deerfield-beach',
+    '/service-areas/delray-beach': 'sa-delray-beach', '/service-areas/delray-beach/': 'sa-delray-beach',
+    '/service-areas/lake-worth': 'sa-lake-worth', '/service-areas/lake-worth/': 'sa-lake-worth',
+    '/financing': 'financing', '/reviews': 'reviews', '/about': 'about',
+    '/our-work': 'our-work', '/wholesale': 'wholesale', '/referral': 'referral',
+  };
+  function getPageFromPath(p) {
+    if (pathToPage[p]) return pathToPage[p];
+    if (p.startsWith('/windows/')) return 'windows';
+    if (p.startsWith('/impact-windows/')) return 'hurricane-impact-windows';
+    if (p.startsWith('/doors/')) return 'doors';
+    if (p.startsWith('/service-areas/')) return 'service-areas';
+    return null;
+  }
+  const pathPage = (location.pathname && location.pathname !== '/') ? getPageFromPath(location.pathname) : null;
+  const startPage = (hash && pages.includes(hash)) ? hash : ((pathPage && pages.includes(pathPage)) ? pathPage : 'home');
   _activatePage(startPage);
   history.replaceState({ page: startPage }, '', '#' + startPage);
 })();
