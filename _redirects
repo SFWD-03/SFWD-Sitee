@@ -1,0 +1,27 @@
+# Netlify SPA redirects - serve index.html for all paths not matching a real file
+# Fixes Destination not working ad disapprovals
+
+/windows          /index.html  200
+/windows/*        /index.html  200
+/impact-windows   /index.html  200
+/impact-windows/* /index.html  200
+/custom/windows   /index.html  200
+/aluminum/windows /index.html  200
+/doors            /index.html  200
+/doors/*          /index.html  200
+/commercial       /index.html  200
+/commercial/*     /index.html  200
+/contact          /index.html  200
+/service-areas    /index.html  200
+/service-areas/*  /index.html  200
+/financing        /index.html  200
+/reviews          /index.html  200
+/about            /index.html  200
+/our-work         /index.html  200
+/wholesale        /index.html  200
+/referral         /index.html  200
+/blog             /index.html  200
+/blog/*           /index.html  200
+/faq              /index.html  200
+/privacy          /index.html  200
+/accessibility    /index.html  200
