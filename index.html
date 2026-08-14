@@ -3034,11 +3034,31 @@ p { line-height: 1.75; }
   </div>
 
   <!-- HURRICANE HOME RISK QUIZ -->
-  <section style="background:#0D2B4E;padding:56px 0 64px;border-top:3px solid rgba(255,255,255,.25)">
-    <div class="container" style="max-width:800px">
-      <div id="hquiz-wrap" style="position:relative;overflow:hidden;border-radius:16px;padding:44px 40px;border:1px solid rgba(255,255,255,.12)">
-        <canvas id="hquiz-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.55;pointer-events:none"></canvas>
-        <div style="position:relative;z-index:2;font-family:'Montserrat',sans-serif;color:#fff">
+  <section style="background:#0D2B4E;border-top:3px solid rgba(255,255,255,.25);position:relative;overflow:hidden;min-height:520px">
+
+    <!-- Before / After background split -->
+    <div style="position:absolute;inset:0;display:flex">
+      <!-- Left: damaged home -->
+      <div style="flex:1;position:relative;overflow:hidden">
+        <img src="hurricane-damaged-home.png" alt="Hurricane damaged home without impact windows" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+        <div style="position:absolute;inset:0;background:rgba(10,20,45,0.58)"></div>
+        <div style="position:absolute;bottom:18px;left:18px;color:rgba(255,255,255,.85);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(180,40,30,.7);padding:4px 10px;border-radius:4px">Without impact windows</div>
+      </div>
+      <!-- Right: protected home -->
+      <div style="flex:1;position:relative;overflow:hidden">
+        <img src="hurricane-protected-home.webp" alt="Florida home protected with impact windows" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+        <div style="position:absolute;inset:0;background:rgba(10,20,45,0.42)"></div>
+        <div style="position:absolute;bottom:18px;right:18px;color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(20,110,50,.8);padding:4px 10px;border-radius:4px">With impact windows ✓</div>
+      </div>
+    </div>
+
+    <!-- Divider line -->
+    <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.25);z-index:1"></div>
+
+    <!-- Quiz card floating center -->
+    <div style="position:relative;z-index:2;padding:48px 20px 56px;display:flex;align-items:center;justify-content:center">
+      <div id="hquiz-wrap" style="width:100%;max-width:580px;background:rgba(8,18,45,0.90);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:40px 40px;border:1px solid rgba(255,255,255,.18)">
+        <div style="font-family:'Montserrat',sans-serif;color:#fff">
 
           <!-- Badge -->
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,50,50,.2);border:1px solid rgba(220,50,50,.5);color:#ff6b6b;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px">
@@ -3075,72 +3095,6 @@ p { line-height: 1.75; }
 
   <script>
   (function(){
-    var canvas = document.getElementById('hquiz-canvas');
-    var ctx = canvas.getContext('2d');
-    var angle = 0;
-
-    function resizeCanvas(){
-      var wrap = document.getElementById('hquiz-wrap');
-      canvas.width = wrap.offsetWidth;
-      canvas.height = wrap.offsetHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    function drawHurricane(){
-      var w = canvas.width, h = canvas.height;
-      var cx = w * 0.78, cy = h * 0.42;
-      var R = Math.min(w, h) * 0.72;
-      ctx.clearRect(0, 0, w, h);
-
-      var numArms = 5;
-      for (var arm = 0; arm < numArms; arm++) {
-        var armStart = angle + (arm / numArms) * Math.PI * 2;
-        ctx.beginPath();
-        var first = true;
-        for (var t = 0.08; t < 1; t += 0.005) {
-          var spiralR = t * R;
-          var spiralA = armStart + t * Math.PI * 2.8;
-          var x = cx + spiralR * Math.cos(spiralA);
-          var y = cy + spiralR * Math.sin(spiralA);
-          if (first) { ctx.moveTo(x, y); first = false; } else { ctx.lineTo(x, y); }
-        }
-        var alpha = arm === 0 ? 0.22 : arm === 1 ? 0.16 : 0.10;
-        var width = arm === 0 ? 28 : arm === 1 ? 20 : 13;
-        ctx.strokeStyle = 'rgba(120,185,255,' + alpha + ')';
-        ctx.lineWidth = width;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      for (var arm2 = 0; arm2 < numArms; arm2++) {
-        var armStart2 = angle + (arm2 / numArms) * Math.PI * 2;
-        ctx.beginPath();
-        var first2 = true;
-        for (var t2 = 0.06; t2 < 0.85; t2 += 0.005) {
-          var sr = t2 * R, sa = armStart2 + t2 * Math.PI * 2.8;
-          var x2 = cx + sr * Math.cos(sa), y2 = cy + sr * Math.sin(sa);
-          if (first2) { ctx.moveTo(x2, y2); first2 = false; } else { ctx.lineTo(x2, y2); }
-        }
-        ctx.strokeStyle = 'rgba(200,230,255,0.07)';
-        ctx.lineWidth = 6;
-        ctx.stroke();
-      }
-      var eyeG = ctx.createRadialGradient(cx,cy,0,cx,cy,R*0.13);
-      eyeG.addColorStop(0,'rgba(5,20,50,0)');
-      eyeG.addColorStop(0.6,'rgba(5,20,50,0)');
-      eyeG.addColorStop(1,'rgba(80,160,255,0.18)');
-      ctx.beginPath(); ctx.arc(cx,cy,R*0.13,0,Math.PI*2);
-      ctx.fillStyle = eyeG; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx,cy,R*0.055,0,Math.PI*2);
-      ctx.fillStyle = 'rgba(8,22,55,0.85)'; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx,cy,R*0.055,0,Math.PI*2);
-      ctx.strokeStyle = 'rgba(160,210,255,0.35)'; ctx.lineWidth = 5; ctx.stroke();
-      angle -= 0.003;
-      requestAnimationFrame(drawHurricane);
-    }
-    drawHurricane();
-
     var questions = [
       { q:'Are your windows impact-rated?', opts:['Yes, all of them','Some of them','No / I\'m not sure'], scores:[0,1,3] },
       { q:'Do you currently have hurricane shutters?', opts:['Yes, on all openings','Partial — some windows only','No'], scores:[0,1,3] },
