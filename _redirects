@@ -1,12 +1,17 @@
-# Netlify SPA redirects - serve index.html for all paths not matching a real file
-# Fixes Destination not working ad disapprovals
+# Netlify SPA redirects — serve index.html for all paths not matching a real file
+# This fixes "Destination not working" disapprovals for Google Ads landing page URLs
 
+# Specific paths used in Google Ads (catches location-insertion macros like /windows/miami)
 /windows          /index.html  200
 /windows/*        /index.html  200
 /impact-windows   /index.html  200
 /impact-windows/* /index.html  200
+
+# Static ad landing page paths
 /custom/windows   /index.html  200
 /aluminum/windows /index.html  200
+
+# Other site sections referenced in canonical URLs
 /doors            /index.html  200
 /doors/*          /index.html  200
 /commercial       /index.html  200
