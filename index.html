@@ -10342,7 +10342,6 @@ window.addEventListener('popstate', function(e) {
 // On first load, set initial state — supports hash (#windows) AND path (/windows/) routing
 (function() {
   const hash = location.hash.replace('#', '');
-  // Path → page mapping (mirrors the canonical URL pathMap in showPage)
   const pathToPage = {
     '/windows': 'windows', '/windows/': 'windows',
     '/impact-windows': 'hurricane-impact-windows', '/impact-windows/': 'hurricane-impact-windows',
@@ -10376,7 +10375,6 @@ window.addEventListener('popstate', function(e) {
   };
   function getPageFromPath(p) {
     if (pathToPage[p]) return pathToPage[p];
-    // Prefix match for location-insertion ad URLs like /windows/miami
     if (p.startsWith('/windows/')) return 'windows';
     if (p.startsWith('/impact-windows/')) return 'hurricane-impact-windows';
     if (p.startsWith('/doors/')) return 'doors';
