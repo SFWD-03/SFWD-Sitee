@@ -1156,7 +1156,9 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 }
 .stats-bar-inner {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(2,1fr);
+  max-width: 600px;
+  margin: 0 auto;
 }
 .stat-item {
   padding: 36px 24px;
@@ -3149,6 +3151,165 @@ p { line-height: 1.75; }
     }
     tick();
     setInterval(tick, 60000);
+  })();
+  </script>
+
+  <!-- HURRICANE HOME RISK QUIZ -->
+  <section style="background:#0D2B4E;padding:0 0 64px">
+    <div class="container" style="max-width:800px">
+      <div id="hquiz-wrap" style="position:relative;overflow:hidden;border-radius:16px;padding:44px 40px;border:1px solid rgba(255,255,255,.12)">
+        <canvas id="hquiz-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.55;pointer-events:none"></canvas>
+        <div style="position:relative;z-index:2;font-family:'Montserrat',sans-serif;color:#fff">
+
+          <!-- Badge -->
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,50,50,.2);border:1px solid rgba(220,50,50,.5);color:#ff6b6b;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px">
+            <div style="width:7px;height:7px;border-radius:50%;background:#ff6b6b;animation:pulse-dot 1.2s infinite"></div>
+            Peak season active — Aug 15 – Nov 1
+          </div>
+
+          <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:700;margin:0 0 6px;color:#fff">Is Your Home Protected?</h3>
+          <p style="color:rgba(255,255,255,.65);font-size:14px;margin:0 0 28px">Answer 4 quick questions to find out your storm risk.</p>
+
+          <!-- Progress -->
+          <div id="hq-progress" style="display:flex;gap:6px;margin-bottom:28px">
+            <div class="hq-seg" id="hqs0"></div>
+            <div class="hq-seg" id="hqs1"></div>
+            <div class="hq-seg" id="hqs2"></div>
+            <div class="hq-seg" id="hqs3"></div>
+          </div>
+
+          <div id="hq-area"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+  .hq-seg { height:3px;flex:1;background:rgba(255,255,255,.15);border-radius:2px;transition:background .4s }
+  .hq-seg.done { background:#C9A84C }
+  .hq-opt { display:block;width:100%;background:rgba(13,43,78,.75);border:1px solid rgba(255,255,255,.2);color:#fff;padding:14px 20px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:background .2s,border-color .2s;margin-bottom:10px }
+  .hq-opt:hover { background:rgba(201,168,76,.2);border-color:rgba(201,168,76,.6) }
+  @keyframes hq-fade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes hq-bar { from{width:0} }
+  .hq-anim { animation:hq-fade .3s ease }
+  </style>
+
+  <script>
+  (function(){
+    var canvas = document.getElementById('hquiz-canvas');
+    var ctx = canvas.getContext('2d');
+    var angle = 0;
+
+    function resizeCanvas(){
+      var wrap = document.getElementById('hquiz-wrap');
+      canvas.width = wrap.offsetWidth;
+      canvas.height = wrap.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawHurricane(){
+      var w = canvas.width, h = canvas.height;
+      var cx = w * 0.78, cy = h * 0.42;
+      var R = Math.min(w, h) * 0.72;
+      ctx.clearRect(0, 0, w, h);
+
+      var numArms = 5;
+      for (var arm = 0; arm < numArms; arm++) {
+        var armStart = angle + (arm / numArms) * Math.PI * 2;
+        ctx.beginPath();
+        var first = true;
+        for (var t = 0.08; t < 1; t += 0.005) {
+          var spiralR = t * R;
+          var spiralA = armStart + t * Math.PI * 2.8;
+          var x = cx + spiralR * Math.cos(spiralA);
+          var y = cy + spiralR * Math.sin(spiralA);
+          if (first) { ctx.moveTo(x, y); first = false; } else { ctx.lineTo(x, y); }
+        }
+        var alpha = arm === 0 ? 0.22 : arm === 1 ? 0.16 : 0.10;
+        var width = arm === 0 ? 28 : arm === 1 ? 20 : 13;
+        ctx.strokeStyle = 'rgba(120,185,255,' + alpha + ')';
+        ctx.lineWidth = width;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      for (var arm2 = 0; arm2 < numArms; arm2++) {
+        var armStart2 = angle + (arm2 / numArms) * Math.PI * 2;
+        ctx.beginPath();
+        var first2 = true;
+        for (var t2 = 0.06; t2 < 0.85; t2 += 0.005) {
+          var sr = t2 * R, sa = armStart2 + t2 * Math.PI * 2.8;
+          var x2 = cx + sr * Math.cos(sa), y2 = cy + sr * Math.sin(sa);
+          if (first2) { ctx.moveTo(x2, y2); first2 = false; } else { ctx.lineTo(x2, y2); }
+        }
+        ctx.strokeStyle = 'rgba(200,230,255,0.07)';
+        ctx.lineWidth = 6;
+        ctx.stroke();
+      }
+      var eyeG = ctx.createRadialGradient(cx,cy,0,cx,cy,R*0.13);
+      eyeG.addColorStop(0,'rgba(5,20,50,0)');
+      eyeG.addColorStop(0.6,'rgba(5,20,50,0)');
+      eyeG.addColorStop(1,'rgba(80,160,255,0.18)');
+      ctx.beginPath(); ctx.arc(cx,cy,R*0.13,0,Math.PI*2);
+      ctx.fillStyle = eyeG; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx,cy,R*0.055,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(8,22,55,0.85)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx,cy,R*0.055,0,Math.PI*2);
+      ctx.strokeStyle = 'rgba(160,210,255,0.35)'; ctx.lineWidth = 5; ctx.stroke();
+      angle -= 0.003;
+      requestAnimationFrame(drawHurricane);
+    }
+    drawHurricane();
+
+    var questions = [
+      { q:'Are your windows impact-rated?', opts:['Yes, all of them','Some of them','No / I\'m not sure'], scores:[0,1,3] },
+      { q:'Do you currently have hurricane shutters?', opts:['Yes, on all openings','Partial — some windows only','No'], scores:[0,1,3] },
+      { q:'How old are your current windows?', opts:['Under 5 years','5–15 years','Over 15 years'], scores:[0,1,3] },
+      { q:'Do you have a wind mitigation inspection on file?', opts:['Yes, up to date','Had one, but it\'s old','No — never had one'], scores:[0,1,3] }
+    ];
+
+    var current = 0, totalScore = 0;
+
+    function updateProgress(){
+      for(var i=0;i<4;i++){
+        document.getElementById('hqs'+i).className='hq-seg'+(i<current?' done':'');
+      }
+    }
+
+    function renderQuestion(){
+      var q = questions[current];
+      var html = '<div class="hq-anim"><div style="font-size:13px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Question '+(current+1)+' of 4</div>';
+      html += '<div style="font-size:19px;font-weight:600;margin:0 0 24px;line-height:1.4">'+q.q+'</div>';
+      q.opts.forEach(function(o,i){
+        html += '<button class="hq-opt" onclick="hqAnswer('+i+')">'+o+'</button>';
+      });
+      html += '</div>';
+      document.getElementById('hq-area').innerHTML = html;
+    }
+
+    window.hqAnswer = function(i){
+      totalScore += questions[current].scores[i];
+      current++;
+      updateProgress();
+      if(current < 4){ renderQuestion(); } else { showResult(); }
+    };
+
+    function showResult(){
+      var level,color,pct,msg;
+      if(totalScore<=2){ level='Well protected';color='#4CAF50';pct=18;msg='Your home is in good shape. A free inspection confirms you\'re fully covered before the most dangerous stretch of the season.'; }
+      else if(totalScore<=5){ level='Moderate risk';color='#F5A623';pct=50;msg='You have some protection, but gaps remain. Windows take 3–10 weeks to install — get a quote before the season peaks.'; }
+      else if(totalScore<=8){ level='High risk';color='#E87B30';pct=74;msg='Significant vulnerabilities. There may still be time to get impact windows installed before the most dangerous stretch — but act fast.'; }
+      else{ level='Extreme risk';color='#E53935';pct=95;msg='Your home is largely unprotected during peak hurricane season. Don\'t wait — the installation window is closing fast.'; }
+      document.getElementById('hqs3').className='hq-seg done';
+      document.getElementById('hq-area').innerHTML='<div class="hq-anim"><div style="font-size:28px;font-weight:700;margin:0 0 4px;color:'+color+'">'+level+'</div><div style="margin:16px 0;"><div style="height:10px;background:rgba(255,255,255,.1);border-radius:5px;overflow:hidden"><div style="height:100%;border-radius:5px;background:'+color+';width:'+pct+'%;animation:hq-bar .8s ease forwards"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(255,255,255,.4)"><span>Protected</span><span>Extreme risk</span></div></div><p style="font-size:14px;color:rgba(255,255,255,.7);margin:0 0 20px;line-height:1.6;background:rgba(13,43,78,.6);padding:14px 16px;border-radius:8px;border-left:3px solid rgba(201,168,76,.6)">'+msg+'</p><button onclick="showPage(\'contact\')" style="display:block;width:100%;background:#C9A84C;color:#0D2B4E;font-family:\'Montserrat\',sans-serif;font-size:15px;font-weight:700;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;margin-bottom:12px">Get My Free Estimate →</button><button onclick="hqRetake()" style="background:none;border:none;color:rgba(255,255,255,.4);font-family:\'Montserrat\',sans-serif;font-size:13px;cursor:pointer;width:100%">Retake the quiz</button></div>';
+    }
+
+    window.hqRetake = function(){
+      current=0;totalScore=0;updateProgress();renderQuestion();
+    };
+
+    renderQuestion();
   })();
   </script>
 
