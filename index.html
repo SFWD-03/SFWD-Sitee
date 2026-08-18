@@ -3034,60 +3034,39 @@ p { line-height: 1.75; }
   </div>
 
   <!-- HURRICANE HOME RISK QUIZ -->
-  <section style="background:#0D2B4E;border-top:3px solid rgba(255,255,255,.25);position:relative;overflow:hidden;min-height:520px">
+  <section style="background:#0D2B4E;border-top:3px solid rgba(255,255,255,.12);padding:64px 20px 72px">
 
-    <!-- Before / After background split -->
-    <div style="position:absolute;inset:0;display:flex">
-      <!-- Left: damaged home -->
-      <div style="flex:1;position:relative;overflow:hidden">
-        <img src="hurricane-protected-home.webp" alt="Hurricane damaged home without impact windows" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
-        <div style="position:absolute;inset:0;background:rgba(10,20,45,0.58)"></div>
-        <div style="position:absolute;bottom:18px;left:18px;color:rgba(255,255,255,.85);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(180,40,30,.7);padding:4px 10px;border-radius:4px">Without impact windows</div>
-      </div>
-      <!-- Right: protected home -->
-      <div style="flex:1;position:relative;overflow:hidden">
-        <img src="hurricane-damaged-home.png" alt="Florida home protected with impact windows" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
-        <div style="position:absolute;inset:0;background:rgba(10,20,45,0.42)"></div>
-        <div style="position:absolute;bottom:18px;right:18px;color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(20,110,50,.8);padding:4px 10px;border-radius:4px">With impact windows ✓</div>
-      </div>
-    </div>
+    <!-- Quiz card -->
+    <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:20px;padding:48px 48px;box-shadow:0 24px 80px rgba(0,0,0,.35)">
+      <div style="font-family:'Montserrat',sans-serif">
 
-    <!-- Divider line -->
-    <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.25);z-index:1"></div>
-
-    <!-- Quiz card floating center -->
-    <div style="position:relative;z-index:2;padding:48px 20px 56px;display:flex;align-items:center;justify-content:center">
-      <div id="hquiz-wrap" style="width:100%;max-width:580px;background:rgba(8,18,45,0.90);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:40px 40px;border:1px solid rgba(255,255,255,.18)">
-        <div style="font-family:'Montserrat',sans-serif;color:#fff">
-
-          <!-- Badge -->
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,50,50,.2);border:1px solid rgba(220,50,50,.5);color:#ff6b6b;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px">
-            <div style="width:7px;height:7px;border-radius:50%;background:#ff6b6b;animation:pulse-dot 1.2s infinite"></div>
-            Peak season active — Aug 15 – Nov 1
-          </div>
-
-          <h3 style="font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:700;margin:0 0 6px;color:#fff">Is Your Home Protected?</h3>
-          <p style="color:rgba(255,255,255,.65);font-size:14px;margin:0 0 28px">Answer 4 quick questions to find out your storm risk.</p>
-
-          <!-- Progress -->
-          <div id="hq-progress" style="display:flex;gap:6px;margin-bottom:28px">
-            <div class="hq-seg" id="hqs0"></div>
-            <div class="hq-seg" id="hqs1"></div>
-            <div class="hq-seg" id="hqs2"></div>
-            <div class="hq-seg" id="hqs3"></div>
-          </div>
-
-          <div id="hq-area"></div>
+        <!-- Badge -->
+        <div style="display:inline-flex;align-items:center;gap:8px;background:#fff3f3;border:1px solid #f5c0c0;color:#c01a1a;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px">
+          <div style="width:7px;height:7px;border-radius:50%;background:#e03030;animation:pulse-dot 1.2s infinite"></div>
+          Peak season active — Aug 15 – Nov 1
         </div>
+
+        <h3 style="font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;margin:0 0 6px;color:#0D2B4E">Is Your Home Protected?</h3>
+        <p style="color:#5a6e82;font-size:14px;margin:0 0 28px">Answer 4 quick questions to find out your storm risk.</p>
+
+        <!-- Progress -->
+        <div id="hq-progress" style="display:flex;gap:6px;margin-bottom:28px">
+          <div class="hq-seg" id="hqs0"></div>
+          <div class="hq-seg" id="hqs1"></div>
+          <div class="hq-seg" id="hqs2"></div>
+          <div class="hq-seg" id="hqs3"></div>
+        </div>
+
+        <div id="hq-area"></div>
       </div>
     </div>
   </section>
 
   <style>
-  .hq-seg { height:3px;flex:1;background:rgba(255,255,255,.15);border-radius:2px;transition:background .4s }
+  .hq-seg { height:3px;flex:1;background:#dce6ef;border-radius:2px;transition:background .4s }
   .hq-seg.done { background:#C9A84C }
-  .hq-opt { display:block;width:100%;background:rgba(13,43,78,.75);border:1px solid rgba(255,255,255,.2);color:#fff;padding:14px 20px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:background .2s,border-color .2s;margin-bottom:10px }
-  .hq-opt:hover { background:rgba(201,168,76,.2);border-color:rgba(201,168,76,.6) }
+  .hq-opt { display:block;width:100%;background:#fff;border:1.5px solid #cddaeb;color:#0D2B4E;padding:14px 20px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:background .2s,border-color .2s;margin-bottom:10px }
+  .hq-opt:hover { background:#f0f6ff;border-color:#1a5ca8 }
   @keyframes hq-fade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
   @keyframes hq-bar { from{width:0} }
   .hq-anim { animation:hq-fade .3s ease }
@@ -3112,8 +3091,8 @@ p { line-height: 1.75; }
 
     function renderQuestion(){
       var q = questions[current];
-      var html = '<div class="hq-anim"><div style="font-size:13px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Question '+(current+1)+' of 4</div>';
-      html += '<div style="font-size:19px;font-weight:600;margin:0 0 24px;line-height:1.4">'+q.q+'</div>';
+      var html = '<div class="hq-anim"><div style="font-size:12px;color:#8fa3b8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Question '+(current+1)+' of 4</div>';
+      html += '<div style="font-size:19px;font-weight:600;margin:0 0 24px;line-height:1.4;color:#0D2B4E">'+q.q+'</div>';
       q.opts.forEach(function(o,i){
         html += '<button class="hq-opt" onclick="hqAnswer('+i+')">'+o+'</button>';
       });
@@ -3130,12 +3109,12 @@ p { line-height: 1.75; }
 
     function showResult(){
       var level,color,pct,msg;
-      if(totalScore<=2){ level='Well protected';color='#4CAF50';pct=18;msg='Your home is in good shape. A free inspection confirms you\'re fully covered before the most dangerous stretch of the season.'; }
-      else if(totalScore<=5){ level='Moderate risk';color='#F5A623';pct=50;msg='You have some protection, but gaps remain. Windows take 3–10 weeks to install — get a quote before the season peaks.'; }
-      else if(totalScore<=8){ level='High risk';color='#E87B30';pct=74;msg='Significant vulnerabilities. There may still be time to get impact windows installed before the most dangerous stretch — but act fast.'; }
-      else{ level='Extreme risk';color='#E53935';pct=95;msg='Your home is largely unprotected during peak hurricane season. Don\'t wait — the installation window is closing fast.'; }
+      if(totalScore<=2){ level='Well protected';color='#2e9e5a';pct=18;msg='Your home is in good shape. A free inspection confirms you\'re fully covered before the most dangerous stretch of the season.'; }
+      else if(totalScore<=5){ level='Moderate risk';color='#d4820a';pct=50;msg='You have some protection, but gaps remain. Windows take 3–10 weeks to install — get a quote before the season peaks.'; }
+      else if(totalScore<=8){ level='High risk';color='#c55a10';pct=74;msg='Significant vulnerabilities. There may still be time to get impact windows installed before the most dangerous stretch — but act fast.'; }
+      else{ level='Extreme risk';color='#c01a1a';pct=95;msg='Your home is largely unprotected during peak hurricane season. Don\'t wait — the installation window is closing fast.'; }
       document.getElementById('hqs3').className='hq-seg done';
-      document.getElementById('hq-area').innerHTML='<div class="hq-anim"><div style="font-size:28px;font-weight:700;margin:0 0 4px;color:'+color+'">'+level+'</div><div style="margin:16px 0;"><div style="height:10px;background:rgba(255,255,255,.1);border-radius:5px;overflow:hidden"><div style="height:100%;border-radius:5px;background:'+color+';width:'+pct+'%;animation:hq-bar .8s ease forwards"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(255,255,255,.4)"><span>Protected</span><span>Extreme risk</span></div></div><p style="font-size:14px;color:rgba(255,255,255,.7);margin:0 0 20px;line-height:1.6;background:rgba(13,43,78,.6);padding:14px 16px;border-radius:8px;border-left:3px solid rgba(201,168,76,.6)">'+msg+'</p><button onclick="showPage(\'contact\')" style="display:block;width:100%;background:#C9A84C;color:#0D2B4E;font-family:\'Montserrat\',sans-serif;font-size:15px;font-weight:700;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;margin-bottom:12px">Get My Free Estimate →</button><button onclick="hqRetake()" style="background:none;border:none;color:rgba(255,255,255,.4);font-family:\'Montserrat\',sans-serif;font-size:13px;cursor:pointer;width:100%">Retake the quiz</button></div>';
+      document.getElementById('hq-area').innerHTML='<div class="hq-anim"><div style="font-size:28px;font-weight:700;margin:0 0 4px;color:'+color+'">'+level+'</div><div style="margin:16px 0;"><div style="height:10px;background:#dce6ef;border-radius:5px;overflow:hidden"><div style="height:100%;border-radius:5px;background:'+color+';width:'+pct+'%;animation:hq-bar .8s ease forwards"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:#8fa3b8"><span>Protected</span><span>Extreme risk</span></div></div><p style="font-size:14px;color:#3a4e60;margin:0 0 20px;line-height:1.6;background:#f5f8fc;padding:14px 16px;border-radius:8px;border-left:3px solid #C9A84C">'+msg+'</p><button onclick="showPage(\'contact\')" style="display:block;width:100%;background:#C9A84C;color:#0D2B4E;font-family:\'Montserrat\',sans-serif;font-size:15px;font-weight:700;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;margin-bottom:12px">Get My Free Estimate →</button><button onclick="hqRetake()" style="background:none;border:none;color:#8fa3b8;font-family:\'Montserrat\',sans-serif;font-size:13px;cursor:pointer;width:100%">Retake the quiz</button></div>';
     }
 
     window.hqRetake = function(){
