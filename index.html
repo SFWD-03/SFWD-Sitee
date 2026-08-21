@@ -630,22 +630,32 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 ============================================================ */
 .site-header {
   position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  display: flex; align-items: stretch; height: 116px;
+}
+.logo {
+  background: #0D2B4E;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.logo-img {
+  width: 130px; height: auto; flex-shrink: 0;
+}
+.nav-area {
+  flex: 1;
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(12px);
   border-bottom: 3px solid #C9A84C;
   box-shadow: 0 2px 16px rgba(0,0,0,.07);
-}
-.nav-inner {
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  height: 104px;
-}
-.logo {
-  display: flex; flex-direction: row;
-  align-items: center; gap: 12px;
-  cursor: pointer; flex-shrink: 0;
-}
-.logo-img {
-  height: 90px; width: auto; flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  overflow: visible;
 }
 .logo-text-wrap {
   display: flex; flex-direction: column; gap: 2px;
@@ -2032,8 +2042,9 @@ a.footer-phone:hover { color: var(--gold); opacity: .8; }
 
   /* Header */
   .site-header { position: sticky; top: 0; z-index: 100; }
-  .nav-inner { height: 80px; position: relative; }
-  .logo-img { height: 48px !important; }
+  .nav-inner { height: 80px; }
+  .logo { padding: 0 18px; }
+  .logo-img { width: 80px !important; height: auto !important; }
   .logo-line1, .logo-line2 { font-size: 15px !important; }
   .logo-text-wrap { padding-left: 12px; border-left-width: 1px; }
   .nav-links { display: none !important; }
@@ -2701,8 +2712,13 @@ p { line-height: 1.75; }
 
 <!-- SITE HEADER -->
 <header class="site-header">
-  <div class="container">
-    <nav class="nav-inner">
+  <nav class="nav-inner">
+    <div class="logo" onclick="showPage('home')">
+      <img src="wad_white_removebg_preview_wu3s744g4ulsahtszzctl-661x377.webp"
+           alt="South Florida Windows &amp; Doors"
+           class="logo-img">
+    </div>
+    <div class="nav-area">
       <div class="nav-links">
         <a onclick="showPage('home')"       id="nav-home"       class="active">Home</a>
         <div class="nav-windows-wrap" id="nav-windows-wrap">
@@ -2905,11 +2921,6 @@ p { line-height: 1.75; }
           </div>
         </div>
       </div>
-      <div class="logo" onclick="showPage('home')">
-        <img src="wad_white_removebg_preview_wu3s744g4ulsahtszzctl-661x377.webp"
-             alt="South Florida Windows &amp; Doors"
-             class="logo-img">
-      </div>
       <div class="nav-right">
         <a onclick="showPage('commercial')" id="nav-commercial">Commercial</a>
         <a onclick="showPage('financing')"  id="nav-financing">Financing</a>
@@ -2925,12 +2936,13 @@ p { line-height: 1.75; }
           </div>
         </div>
         <a onclick="showPage('contact')"    id="nav-contact">Contact</a>
-        <button onclick="showPage('contact');trackCTA('header_cta')" class="nav-cta-btn">Contact Us</button>
+        <button onclick="showPage('contact');trackCTA('header_cta')" class="nav-cta-btn">Free Estimate</button>
       </div>
       <button class="hamburger" id="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
       </button>
-    </nav>
+    </div>
+  </nav>
     <!-- MOBILE NAV DRAWER -->
     <div class="mobile-nav-drawer" id="mobile-nav-drawer">
       <a onclick="showPage('home');closeMobileNav()"       >Home</a>
@@ -2952,7 +2964,6 @@ p { line-height: 1.75; }
         (954) 833-0092
       </a>
     </div>
-  </div>
 </header>
 
 
