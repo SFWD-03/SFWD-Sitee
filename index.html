@@ -2918,6 +2918,7 @@ p { line-height: 1.75; }
         <div class="nav-more-wrap" style="position:relative">
           <a class="nav-more-btn" onclick="toggleNavMore(event)" style="display:flex;align-items:center;gap:4px">About Us ▾</a>
           <div id="nav-more-dropdown" style="display:none;position:absolute;top:100%;right:0;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,.12);border-radius:8px;min-width:160px;padding:8px 0;z-index:999">
+            <a onclick="showPage('specials');closeNavMore()"   style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);font-weight:600;white-space:nowrap">Special Offers</a>
             <a onclick="showPage('wholesale');closeNavMore()"  style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);white-space:nowrap">Buy Direct: Contractors &amp; DIY</a>
             <a onclick="showPage('our-work');closeNavMore()"   style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);white-space:nowrap">Project Gallery</a>
             <a onclick="showPage('referral');closeNavMore()"   style="display:block;padding:8px 20px;font-size:12px;color:var(--navy);font-weight:600;white-space:nowrap">Refer &amp; Earn</a>
@@ -6694,49 +6695,85 @@ p { line-height: 1.75; }
     </div>
   </section>
 
-  <!-- PRODUCT SPECIALS GRID -->
-  <section class="section" style="background:var(--warm-white);padding-top:0">
+  <!-- FEATURED OFFER: PGT SUMMER SAVINGS -->
+  <section style="background:#fff;padding:56px 0;border-top:4px solid #CC1820;border-bottom:1px solid #eee">
     <div class="container">
-
-      <!-- Special Card 1 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:72px">
+      <div style="text-align:center;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#CC1820;margin-bottom:10px">Limited-Time Offer · Orders Must Be Placed By August 31, 2026</div>
+        <h2 style="font-size:clamp(24px,4vw,36px);font-weight:800;color:#081E38;margin-bottom:4px">PGT Summer Savings Rebate</h2>
+        <p style="font-size:15px;color:var(--gray-600);margin-bottom:28px">Invest in your view — and get rewarded. Up to $100 back per unit on select PGT® products.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:900px;margin:0 auto">
         <div>
-</div>
+          <img src="pgt-rebate-flyer-1.png" alt="PGT Summer Savings rebate flyer" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.18);display:block"/>
+        </div>
         <div>
-          <div class="eyebrow">Windows Special</div>
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:clamp(24px,3vw,36px);color:var(--navy);margin-bottom:16px;">PGT® WinGuard® Impact Windows</h3>
-          <p style="font-size:15px;color:var(--gray-600);line-height:1.8;margin-bottom:8px;">Upgrade to industry-leading PGT® WinGuard® impact-resistant windows. Engineered for South Florida's harshest storms, WinGuard® windows deliver unmatched protection, energy efficiency, and stunning curb appeal — all backed by an exclusive Crystal Care Premium Limited Warranty.</p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
+            <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid #eee;border-radius:8px;background:#fafafa">
+              <div style="font-size:32px;font-weight:800;color:#CC1820;min-width:60px;text-align:center">$100</div>
+              <div style="font-size:14px;color:#333;line-height:1.5">per WinGuard® Aluminum, WinGuard® Vinyl, or Estate by PGT® door</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid #eee;border-radius:8px;background:#fafafa">
+              <div style="font-size:32px;font-weight:800;color:#CC1820;min-width:60px;text-align:center">$75</div>
+              <div style="font-size:14px;color:#333;line-height:1.5">per EnergyVue®, ClassicVue Max®, Sparta door</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid #eee;border-radius:8px;background:#fafafa">
+              <div style="font-size:32px;font-weight:800;color:#CC1820;min-width:60px;text-align:center">$50</div>
+              <div style="font-size:14px;color:#333;line-height:1.5">per WinGuard® Aluminum or WinGuard® Vinyl window</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid #eee;border-radius:8px;background:#fafafa">
+              <div style="font-size:32px;font-weight:800;color:#CC1820;min-width:60px;text-align:center">$25</div>
+              <div style="font-size:14px;color:#333;line-height:1.5">per EnergyVue® or ClassicVue Max® Sparta window</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <button onclick="showPage('contact')" class="btn btn-gold" style="font-size:15px;padding:14px 28px">Get a Free Quote &amp; Claim Your Rebate</button>
+          </div>
+          <p style="font-size:11px;color:#aaa;margin-top:14px;line-height:1.6">Savings issued as electronic gift cards. Register by Nov 24, 2026 at pgtwindows.com/summersavings · Code: SUMMERSAVINGS2026</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Special Card 2 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:72px">
-        <div style="order:2">
-</div>
-        <div style="order:1">
-          <div class="eyebrow">Doors Special</div>
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:clamp(24px,3vw,36px);color:var(--navy);margin-bottom:16px;">Sentinel by CGI® Impact Doors</h3>
-          <p style="font-size:15px;color:var(--gray-600);line-height:1.8;margin-bottom:8px;">Make a lasting impression with Sentinel by CGI® impact-rated doors. Combining elegant design with hurricane-force protection, these doors are the perfect upgrade for any South Florida home or commercial property. Currently offering special pricing on select styles.</p>
-        </div>
+  <!-- MORE OFFERS -->
+  <section class="section" style="background:var(--warm-white);padding-top:56px">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="eyebrow">More Ways to Save</div>
+        <h2 style="font-family:'Montserrat', sans-serif;font-size:clamp(24px,3vw,36px);color:var(--navy);margin-bottom:0">Additional Current Offers</h2>
       </div>
 
-      <!-- Special Card 3 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:72px">
-        <div>
-</div>
-        <div>
-          <div class="eyebrow">Bundle Offer</div>
-          <h3 style="font-family:'Montserrat', sans-serif;font-size:clamp(24px,3vw,36px);color:var(--navy);margin-bottom:16px;">Window &amp; Door Combo Savings</h3>
-          <p style="font-size:15px;color:var(--gray-600);line-height:1.8;margin-bottom:8px;">Replacing windows and doors together? Ask us about our bundle pricing — you'll often get better value when combining products. Our team will help you design the perfect combination for your home while maximizing your savings.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-bottom:56px">
+
+        <!-- Card 1 -->
+        <div style="background:#fff;border-radius:12px;border:1px solid #eee;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+          <div class="eyebrow">Windows</div>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:20px;color:var(--navy);margin:12px 0 12px">PGT® WinGuard® Impact Windows</h3>
+          <p style="font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">Industry-leading hurricane-impact windows engineered for South Florida's harshest storms — unmatched protection, energy efficiency, and curb appeal backed by the Crystal Care Premium Limited Warranty.</p>
+          <button class="btn btn-outline-dark" style="font-size:13px;padding:10px 20px" onclick="showPage('contact')">Ask About Pricing</button>
         </div>
+
+        <!-- Card 2 -->
+        <div style="background:#fff;border-radius:12px;border:1px solid #eee;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+          <div class="eyebrow">Doors</div>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:20px;color:var(--navy);margin:12px 0 12px">Sentinel by CGI® Impact Doors</h3>
+          <p style="font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">Elegant design meets hurricane-force protection. Currently offering special pricing on select Sentinel by CGI® styles for South Florida homes and commercial properties.</p>
+          <button class="btn btn-outline-dark" style="font-size:13px;padding:10px 20px" onclick="showPage('contact')">Ask About Pricing</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="background:#fff;border-radius:12px;border:1px solid #eee;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+          <div class="eyebrow">Bundle Deal</div>
+          <h3 style="font-family:'Montserrat', sans-serif;font-size:20px;color:var(--navy);margin:12px 0 12px">Window &amp; Door Combo Savings</h3>
+          <p style="font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">Replacing windows and doors together? Ask about our bundle pricing — you'll often get better value combining products. Our team will design the perfect combination for your home.</p>
+          <button class="btn btn-outline-dark" style="font-size:13px;padding:10px 20px" onclick="showPage('contact')">Ask About Pricing</button>
+        </div>
+
       </div>
 
-      <!-- SINGLE CTA — applies to all specials above -->
-      <div style="border-top:1px solid var(--gray-100);padding-top:48px;margin-top:16px;text-align:center">
-        <p style="font-size:15px;color:var(--gray-500);margin-bottom:28px;">Interested in any of our current specials? Contact us for exact pricing and availability — our team will walk you through every option.</p>
-        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-          <button class="btn btn-gold" onclick="showPage('contact')">Ask About Current Pricing</button>
-        </div>
+      <div style="border-top:1px solid var(--gray-100);padding-top:40px;text-align:center">
+        <p style="font-size:15px;color:var(--gray-500);margin-bottom:24px">Have a specific product in mind? Contact us for exact pricing and availability.</p>
+        <button class="btn btn-gold" onclick="showPage('contact')">Get a Free Quote</button>
       </div>
 
     </div>
