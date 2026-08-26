@@ -197,16 +197,21 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
       "@id": "https://www.myflwindows.com/#business",
       "name": "South Florida Windows & Doors",
-      "alternateName": ["SFWD", "South Florida Windows and Doors"],
-      "description": "Authorized dealer specializing in impact windows, hurricane doors, and commercial glazing. Serving Broward and Palm Beach County for 30+ years.",
+      "alternateName": ["SFWD", "South Florida Windows and Doors", "myflwindows"],
+      "description": "Licensed impact window and door installation contractor serving Broward and Palm Beach County for 30+ years. Specializing in hurricane impact windows, impact doors, and commercial glazing — installation only, no repairs. Authorized dealer of PGT, CGI, and WinDoor products. Free in-home estimates.",
       "url": "https://www.myflwindows.com/",
       "telephone": "+1-954-833-0092",
       "email": "info@myflwindows.com",
-      "image": "pexels-jeffrey-eisen-1257101-37485070.jpg",
-      "logo": "pexels-jeffrey-eisen-1257101-37485070.jpg",
+      "image": "https://www.myflwindows.com/pexels-jeffrey-eisen-1257101-37485070.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.myflwindows.com/pexels-jeffrey-eisen-1257101-37485070.jpg",
+        "width": 400,
+        "height": 400
+      },
       "priceRange": "$$",
       "currenciesAccepted": "USD",
       "paymentAccepted": "Cash, Check, Credit Card, Financing",
@@ -284,9 +289,41 @@
       },
       "sameAs": [
         "https://www.facebook.com/southfloridawindowsanddoors",
-        "https://www.instagram.com/sfwindowsdoors"
+        "https://www.instagram.com/sfwindowsdoors",
+        "https://www.google.com/maps?cid=9292490364",
+        "https://www.bbb.org/us/fl/pompano-beach/profile/windows/south-florida-windows-doors"
       ],
-      "license": "CGC1519583"
+      "license": "CGC1519583",
+      "knowsAbout": [
+        "impact windows",
+        "hurricane windows",
+        "impact doors",
+        "hurricane doors",
+        "commercial glazing",
+        "window installation",
+        "door installation",
+        "Florida building code",
+        "Miami-Dade approved windows",
+        "Broward County permits",
+        "PGT windows",
+        "CGI windows",
+        "WinDoor products"
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.myflwindows.com/#contact",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "Reservation",
+          "name": "Free In-Home Estimate"
+        }
+      }
     },
     {
       "@type": "FAQPage",
