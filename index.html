@@ -5628,7 +5628,7 @@ p { line-height: 1.75; }
           </div>
 
           <!-- FORM -->
-          <form id="appointment-form" name="appointment-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form id="appointment-form" name="appointment-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-recaptcha="true">
             <input type="hidden" name="form-name" value="appointment-request"/>
             <input type="hidden" name="bot-field" style="display:none"/>
             <div class="form-row-2">
@@ -5661,6 +5661,7 @@ p { line-height: 1.75; }
             <div class="form-group"><label class="form-label">Message / Additional Information</label>
               <textarea class="form-control" name="message" placeholder="Tell us about your project, any special requirements, or questions you have..."></textarea>
             </div>
+            <div data-netlify-recaptcha="true" style="margin-bottom:16px"></div>
             <button type="submit" class="btn btn-gold form-submit">Submit Request &nbsp;&#8594;</button>
             <div class="form-note">By submitting, you agree to be contacted by our team regarding your appointment request.</div>
           </form>
