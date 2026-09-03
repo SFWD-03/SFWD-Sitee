@@ -3451,14 +3451,6 @@ p { line-height: 1.75; }
         <p style="color:rgba(255,255,255,.7);max-width:520px;margin:0 auto">Real installations across South Florida homes and businesses — from sleek modern impact windows to grand impact entry doors.</p>
       </div>
 
-      <!-- Filter Tabs -->
-      <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:36px 0 32px">
-        <button class="gallery-tab active-tab" onclick="filterHomeGallery('all',this)" style="padding:8px 20px;border:1px solid rgba(255,255,255,.2);background:var(--gold);color:var(--navy);border-radius:24px;font-size:13px;font-weight:600;cursor:pointer">All Projects</button>
-        <button class="gallery-tab" onclick="filterHomeGallery('windows',this)" style="padding:8px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);border-radius:24px;font-size:13px;font-weight:600;cursor:pointer">Impact Windows</button>
-        <button class="gallery-tab" onclick="filterHomeGallery('doors',this)" style="padding:8px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);border-radius:24px;font-size:13px;font-weight:600;cursor:pointer">Impact Doors</button>
-        <button class="gallery-tab" onclick="filterHomeGallery('commercial',this)" style="padding:8px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);border-radius:24px;font-size:13px;font-weight:600;cursor:pointer">Commercial</button>
-      </div>
-
       <!-- Gallery Grid -->
       <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
         <div class="gallery-item" data-cat="windows" style="position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/3;cursor:pointer" onclick="trackCTA('gallery_windows_1')">
@@ -3496,21 +3488,7 @@ p { line-height: 1.75; }
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-item:hover .gallery-overlay,
     .gallery-item:hover .gallery-label { opacity: 1 !important; }
-    .gallery-tab:hover { background: rgba(0,0,0,.15) !important; color: white !important; }
   </style>
-  <script>
-    function filterHomeGallery(cat, btn) {
-      document.querySelectorAll('.gallery-tab').forEach(function(b) {
-        b.style.background = 'transparent';
-        b.style.color = 'rgba(255,255,255,.8)';
-      });
-      btn.style.background = 'var(--gold)';
-      btn.style.color = 'var(--navy)';
-      document.querySelectorAll('.gallery-item').forEach(function(el) {
-        el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'block' : 'none';
-      });
-    }
-  </script>
 
   <!-- BRAND MANTRA -->
   <div style="background:var(--navy);padding:64px 24px;text-align:center">
