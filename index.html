@@ -9003,17 +9003,6 @@ p { line-height: 1.75; }
     </div>
   </section>
 
-  <!-- FILTER TABS -->
-  <section class="section section-warm" style="padding-top:48px;padding-bottom:0">
-    <div class="container">
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px">
-        <button class="btn btn-gold" id="gf-all"        onclick="filterGallery('all')"       >All Projects</button>
-        <button class="btn btn-outline-dark" id="gf-windows"     onclick="filterGallery('windows')"   >Windows</button>
-        <button class="btn btn-outline-dark" id="gf-doors"       onclick="filterGallery('doors')"     >Doors</button>
-        <button class="btn btn-outline-dark" id="gf-commercial"  onclick="filterGallery('commercial')">Commercial</button>
-      </div>
-    </div>
-  </section>
 
   <!-- GALLERY GRID -->
   <section class="section section-warm" style="padding-top:0">
@@ -10379,19 +10368,6 @@ document.addEventListener('click', function(e) {
 
 
 
-<script>
-function filterGallery(cat) {
-  var items = document.querySelectorAll('#our-work-grid .gal-item');
-  items.forEach(function(el) {
-    el.style.display = (cat === 'all' || el.getAttribute('data-cat') === cat) ? 'block' : 'none';
-  });
-  ['all','windows','doors','commercial'].forEach(function(c) {
-    var btn = document.getElementById('gf-' + c);
-    if (!btn) return;
-    btn.className = (c === cat) ? 'btn btn-gold' : 'btn btn-outline-dark';
-  });
-}
-</script>
 
 
   <!-- ═══ Sticky Mobile Call Bar ═══ -->
