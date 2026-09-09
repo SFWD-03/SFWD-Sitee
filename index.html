@@ -1186,6 +1186,90 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
   to   { transform: scale(1.08); }
 }
 
+/* ── Referral content slide ── */
+.hero-slide-referral {
+  background: #0f2145;
+  display: flex;
+  align-items: center;
+}
+.hero-slide-referral.active {
+  animation: none !important;
+  transform: none !important;
+}
+/* Promote #hero-slides above overlay + hero-content when referral slide is showing */
+#hero-slides.ref-active { z-index: 6; }
+.ref-slide-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+}
+.ref-slide-content { flex: 1; }
+.ref-slide-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(180,192,210,.5);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.ref-slide-eyebrow::before {
+  content: '';
+  display: block; width: 32px; height: 1px;
+  background: rgba(180,192,210,.35);
+  flex-shrink: 0;
+}
+.ref-slide-heading {
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 800; line-height: 1.1;
+  color: #ffffff;
+  letter-spacing: -.01em;
+  margin: 0 0 10px;
+  font-family: var(--font-head);
+}
+.ref-slide-sub {
+  font-size: 12px; font-weight: 600; letter-spacing: .07em;
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.ref-slide-rule {
+  width: 40px; height: 3px;
+  background: linear-gradient(90deg, rgba(180,192,210,.3), rgba(220,228,236,.75), rgba(180,192,210,.3));
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+.ref-slide-body {
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: rgba(255,255,255,.52);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 26px;
+}
+.ref-slide-cta { display: flex; gap: 12px; align-items: center; }
+.ref-slide-btn {
+  background: rgba(255,255,255,.09);
+  border: 2px solid rgba(255,255,255,.2);
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.ref-slide-btn:hover { background: rgba(255,255,255,.18); }
+.ref-slide-logo { flex-shrink: 0; width: clamp(160px, 20vw, 260px); }
+.ref-slide-logo img { width: 100%; display: block; }
+@media (max-width: 768px) {
+  .ref-slide-inner { flex-direction: column; gap: 28px; padding: 0 24px; }
+  .ref-slide-logo { width: 140px; }
+  .ref-slide-heading { font-size: 28px; }
+}
+
 /* Arrows */
 .hero-arrow {
   position: absolute;
@@ -3112,7 +3196,23 @@ p { line-height: 1.75; }
       <div id="hero-slides" aria-hidden="true">
         <div class="hero-slide active" style="background-image:url('pexels-jeffrey-eisen-1257101-37485070.jpg')"></div>
         <div class="hero-slide" style="background-image:url('house-hero.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('pool-hero.jpg')"></div>
+        <div class="hero-slide hero-slide-referral">
+          <div class="ref-slide-inner">
+            <div class="ref-slide-content">
+              <div class="ref-slide-eyebrow">Referral Reward Program</div>
+              <h2 class="ref-slide-heading">Love Your New<br>Windows?<br>Earn Up to $500.</h2>
+              <div class="ref-slide-sub">Amazon Gift Card &middot; Same-Day Payment</div>
+              <div class="ref-slide-rule"></div>
+              <p class="ref-slide-body">Refer a friend, neighbor, or family member. When they place an order, your gift card arrives the same day — 1% of their job total, up to $500. Unlimited referrals, no waiting.</p>
+              <div class="ref-slide-cta">
+                <button class="ref-slide-btn" onclick="showPage('referral')">Learn More</button>
+              </div>
+            </div>
+            <div class="ref-slide-logo">
+              <img src="sfwd-logo-swirl.png" alt="South Florida Windows &amp; Doors">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Overlay -->
@@ -10409,12 +10509,19 @@ document.addEventListener('click', function(e) {
   var cur    = 0;
   var timer;
 
+  var heroSlidesEl = document.getElementById('hero-slides');
   function heroActivate(n) {
     slides[cur].classList.remove('active');
     dots[cur].classList.remove('active');
     cur = (n + slides.length) % slides.length;
     slides[cur].classList.add('active');
     dots[cur].classList.add('active');
+    // Promote #hero-slides above overlay when referral slide is active
+    if (slides[cur].classList.contains('hero-slide-referral')) {
+      heroSlidesEl.classList.add('ref-active');
+    } else {
+      heroSlidesEl.classList.remove('ref-active');
+    }
     resetTimer();
   }
 
