@@ -1198,6 +1198,9 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 }
 /* Promote #hero-slides above overlay + hero-content when referral slide is showing */
 #hero-slides.ref-active { z-index: 6; }
+/* Hide main hero content/overlay when referral slide is active */
+.hero.hero--ref-active .hero-overlay,
+.hero.hero--ref-active .hero-content { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
 .ref-slide-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -3244,6 +3247,7 @@ p { line-height: 1.75; }
         <button class="hero-dot active" onclick="heroGo(0)" aria-label="Slide 1"></button>
         <button class="hero-dot" onclick="heroGo(1)" aria-label="Slide 2"></button>
         <button class="hero-dot" onclick="heroGo(2)" aria-label="Slide 3"></button>
+        <button class="hero-dot" onclick="heroGo(3)" aria-label="Slide 4"></button>
       </div>
       <div class="container" style="width:100%">
         <div class="hero-content">
@@ -10527,17 +10531,20 @@ document.addEventListener('click', function(e) {
   var timer;
 
   var heroSlidesEl = document.getElementById('hero-slides');
+  var heroSection  = document.querySelector('.hero');
   function heroActivate(n) {
     slides[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
+    if (dots[cur]) dots[cur].classList.remove('active');
     cur = (n + slides.length) % slides.length;
     slides[cur].classList.add('active');
-    dots[cur].classList.add('active');
-    // Promote #hero-slides above overlay when referral slide is active
+    if (dots[cur]) dots[cur].classList.add('active');
+    // Promote #hero-slides above overlay and hide main content when referral slide is active
     if (slides[cur].classList.contains('hero-slide-referral')) {
       heroSlidesEl.classList.add('ref-active');
+      if (heroSection) heroSection.classList.add('hero--ref-active');
     } else {
       heroSlidesEl.classList.remove('ref-active');
+      if (heroSection) heroSection.classList.remove('hero--ref-active');
     }
     resetTimer();
   }
