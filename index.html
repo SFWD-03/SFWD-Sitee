@@ -561,7 +561,7 @@
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 
 /* ============================================================
@@ -616,10 +616,10 @@ ul { list-style: none; }
    TYPOGRAPHY SCALE
 ============================================================ */
 .display {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
 }
 h1.display { font-size: clamp(2.4rem, 4.5vw, 3.8rem); }
 h2.display { font-size: clamp(1.8rem, 3vw, 2.6rem); }
@@ -3195,60 +3195,79 @@ p { line-height: 1.75; }
 <div id="page-home" class="page active">
 
   <!-- HERO -->
-  <div style="position:relative">
-    <section class="hero" style="background:linear-gradient(160deg,#0a0a0a 0%,#1a1a1a 60%,#0a0a0a 100%);min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden">
+  <section style="background:#0d0d0d;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:40px 24px">
 
-      <!-- Silver diagonal accent lines (CSS only, brand feel) -->
-      <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-        <div style="position:absolute;top:-20%;right:-5%;width:55%;height:140%;background:linear-gradient(135deg,transparent 0%,rgba(192,192,192,.03) 40%,rgba(192,192,192,.06) 50%,rgba(192,192,192,.03) 60%,transparent 100%);transform:skewX(-8deg)"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,192,192,.2) 30%,rgba(192,192,192,.2) 70%,transparent)"></div>
+    <!-- Subtle vignette bg -->
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,192,192,.04) 0%,transparent 65%);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,192,192,.15) 30%,rgba(192,192,192,.15) 70%,transparent)"></div>
+
+    <!-- Hero content -->
+    <div style="position:relative;z-index:2;max-width:680px;width:100%">
+
+      <!-- Swirl logo — large and centered -->
+      <img src="sfwd-logo-swirl-transparent.png"
+           alt="South Florida Windows &amp; Doors"
+           style="width:clamp(120px,16vw,180px);margin-bottom:32px;opacity:.95;filter:drop-shadow(0 0 48px rgba(192,192,192,.18))">
+
+      <!-- Eyebrow -->
+      <div style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(192,192,192,.45);margin-bottom:20px">Windows &nbsp;·&nbsp; Doors &nbsp;·&nbsp; South Florida</div>
+
+      <!-- Main headline — Playfair Display serif like Legitimate Forge -->
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,68px);font-weight:700;color:#ffffff;line-height:1.1;margin:0 0 8px;letter-spacing:-.01em">South Florida<br>Windows &amp; Doors</h1>
+
+      <!-- Sub brand line -->
+      <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,192,192,.35);margin-bottom:28px">A Division of Hartzell</div>
+
+      <!-- Divider rule -->
+      <div style="width:48px;height:1px;background:rgba(192,192,192,.25);margin:0 auto 28px"></div>
+
+      <!-- Description -->
+      <p style="font-family:'Montserrat',sans-serif;font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.45);line-height:1.85;max-width:480px;margin:0 auto 44px;font-weight:300">
+        Hurricane-impact windows and doors for homes and businesses across South Florida — designed to endure, built to impress.
+      </p>
+
+      <!-- CTA buttons -->
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px">
+        <button onclick="showPage('contact');trackCTA('hero_quote')"
+                style="font-family:'Montserrat',sans-serif;background:#C0C0C0;color:#111111;border:none;padding:14px 36px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s"
+                onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#C0C0C0'">
+          Get a Free Quote
+        </button>
+        <button onclick="showPage('our-work');trackCTA('hero_work')"
+                style="font-family:'Montserrat',sans-serif;background:transparent;color:rgba(192,192,192,.7);border:1px solid rgba(192,192,192,.25);padding:14px 36px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .2s"
+                onmouseover="this.style.borderColor='rgba(192,192,192,.6)';this.style.color='#C0C0C0'" onmouseout="this.style.borderColor='rgba(192,192,192,.25)';this.style.color='rgba(192,192,192,.7)'">
+          View Our Work
+        </button>
       </div>
 
-      <div class="container" style="width:100%;position:relative;z-index:2">
-        <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px">
-
-          <!-- Left: headline & CTAs -->
-          <div class="hero-content" style="padding:80px 0">
-            <div class="eyebrow eyebrow-light" style="color:rgba(192,192,192,.7);letter-spacing:.18em">Licensed · Insured · Serving South Florida for 30+ Years</div>
-            <h1 class="display" style="color:#ffffff;font-weight:800;line-height:1.1;margin:16px 0 20px">South Florida's Premier<br/><span style="background:linear-gradient(90deg,#C0C0C0,#e8e8e8,#C0C0C0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Windows &amp; Doors</span></h1>
-            <p style="color:rgba(255,255,255,.65);font-size:clamp(15px,1.6vw,18px);max-width:520px;line-height:1.7;margin-bottom:36px">Hurricane-impact windows and doors for homes and businesses across South Florida. Designed to endure. Built to impress.</p>
-            <div class="hero-actions" style="display:flex;gap:16px;flex-wrap:wrap">
-              <button class="btn" onclick="showPage('contact')" style="background:#C0C0C0;color:#111111;font-weight:700;padding:14px 32px;letter-spacing:.08em;border:none;cursor:pointer">Get a Free Quote</button>
-              <button class="btn" onclick="showPage('windows')" style="background:transparent;color:#C0C0C0;border:1px solid rgba(192,192,192,.5);padding:14px 32px;letter-spacing:.08em;cursor:pointer">Explore Our Services</button>
-            </div>
-            <!-- Trust bar -->
-            <div style="display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(192,192,192,.12);flex-wrap:wrap">
-              <div style="text-align:center">
-                <div style="font-size:22px;font-weight:800;color:#C0C0C0">30+</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Years Experience</div>
-              </div>
-              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
-              <div style="text-align:center">
-                <div style="font-size:22px;font-weight:800;color:#C0C0C0">4.7★</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Google Rating</div>
-              </div>
-              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
-              <div style="text-align:center">
-                <div style="font-size:22px;font-weight:800;color:#C0C0C0">NOA</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Approved Products</div>
-              </div>
-              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
-              <div style="text-align:center">
-                <div style="font-size:22px;font-weight:800;color:#C0C0C0">FL</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Licensed &amp; Insured</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: large logo lockup -->
-          <div style="display:flex;align-items:center;justify-content:center;padding:40px 0" class="hero-logo-right">
-            <img src="sfwd-logo-stacked-transparent.png" alt="South Florida Windows &amp; Doors" style="width:clamp(180px,18vw,280px);opacity:.95;filter:drop-shadow(0 0 40px rgba(192,192,192,.15))">
-          </div>
-
+      <!-- Trust stats row -->
+      <div style="display:flex;gap:0;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(192,192,192,.08);padding-top:32px">
+        <div style="padding:0 28px;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:24px;color:#C0C0C0;font-weight:600">30+</div>
+          <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:4px">Years in Business</div>
+        </div>
+        <div style="width:1px;background:rgba(192,192,192,.08);align-self:stretch"></div>
+        <div style="padding:0 28px;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:24px;color:#C0C0C0;font-weight:600">4.7★</div>
+          <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:4px">Google Rating</div>
+        </div>
+        <div style="width:1px;background:rgba(192,192,192,.08);align-self:stretch"></div>
+        <div style="padding:0 28px;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:24px;color:#C0C0C0;font-weight:600">NOA</div>
+          <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:4px">Approved Products</div>
+        </div>
+        <div style="width:1px;background:rgba(192,192,192,.08);align-self:stretch"></div>
+        <div style="padding:0 28px;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:24px;color:#C0C0C0;font-weight:600">FL</div>
+          <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:4px">Licensed &amp; Insured</div>
         </div>
       </div>
-    </section>
-  </div>
+
+    </div>
+
+    <!-- Scroll cue -->
+    <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,192,192,.2)">Scroll</div>
+  </section>
 
 
 
