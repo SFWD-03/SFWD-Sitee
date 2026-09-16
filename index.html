@@ -568,24 +568,24 @@
    DESIGN TOKENS — LUXURY PALETTE
 ============================================================ */
 :root {
-  --ink:        #081E38;      /* darkest navy */
-  --navy:       #0D2B4E;      /* dark navy */
-  --navy-mid:   #1A4A7A;      /* mid navy */
-  --gold:       #3A8FD4;      /* sky blue accent */
-  --gold-fg:    #ffffff;      /* text on blue buttons */
-  --gold-lt:    #F0F4F8;      /* light grey alternate sections */
-  --icon-bg:    rgba(13,43,78,.08); /* subtle navy for icon boxes */
-  --gold-dark:  #1A6AAF;      /* darker blue for hover */
-  --warm-white: #F0F4F8;      /* light grey alternate */
+  --ink:        #0a0a0a;      /* near black */
+  --navy:       #111111;      /* dark black */
+  --navy-mid:   #2a2a2a;      /* mid charcoal */
+  --gold:       #C0C0C0;      /* silver accent */
+  --gold-fg:    #111111;      /* text on silver buttons */
+  --gold-lt:    #F0F0F0;      /* light silver alternate sections */
+  --icon-bg:    rgba(192,192,192,.10); /* subtle silver for icon boxes */
+  --gold-dark:  #888888;      /* darker silver for hover */
+  --warm-white: #F0F0F0;      /* light silver alternate */
   --gray-50:    #FFFFFF;
-  --gray-100:   #F0F4F8;
-  --gray-200:   #D1E0EE;
+  --gray-100:   #F5F5F5;
+  --gray-200:   #E0E0E0;
   --gray-400:   #A0A0A0;
-  --gray-500:   #6A8099;
-  --gray-600:   #4A607A;
-  --gray-700:   #2A3A5A;
-  --gray-800:   #1A2A3E;
-  --blue-gray:  #7FBDE0;
+  --gray-500:   #707070;
+  --gray-600:   #555555;
+  --gray-700:   #2a2a2a;
+  --gray-800:   #1a1a1a;
+  --blue-gray:  #A0A0A0;
   --white:      #FFFFFF;
   --radius:     4px;
   --radius-lg:  8px;
@@ -641,9 +641,9 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 40px; }
 .section { padding: 96px 0; }
 .section-sm { padding: 56px 0; }
-.section-dark { background: var(--navy); --gold: #7FBDE0; --gold-fg:#0D2B4E; --icon-bg: rgba(255,255,255,.12); }
-.section-ink { background: var(--ink); --gold: #7FBDE0; --gold-fg:#0D2B4E; color: #fff; --icon-bg: rgba(255,255,255,.12); }
-.section-navy { background: var(--navy); color: #fff; --gold: #7FBDE0; --gold-fg:#0D2B4E; --icon-bg: rgba(255,255,255,.12); }
+.section-dark { background: var(--navy); --gold: #C0C0C0; --gold-fg:#111111; --icon-bg: rgba(192,192,192,.15); }
+.section-ink { background: var(--ink); --gold: #C0C0C0; --gold-fg:#111111; color: #fff; --icon-bg: rgba(192,192,192,.15); }
+.section-navy { background: var(--navy); color: #fff; --gold: #C0C0C0; --gold-fg:#111111; --icon-bg: rgba(192,192,192,.15); }
 .section-warm { background: var(--warm-white); }
 .section-cream { background: var(--gold-lt); }
 
@@ -746,7 +746,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 ============================================================ */
 .topbar {
   background: var(--navy);
-  --gold: #7FBDE0; --gold-fg:#0D2B4E;
+  --gold: #C0C0C0; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.12);
   padding: 9px 0;
   border-bottom: 1px solid rgba(255,255,255,.06);
@@ -1384,7 +1384,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 ============================================================ */
 .stats-bar {
   background: var(--navy);
-  --gold: #ffffff; --gold-fg:#0D2B4E;
+  --gold: #ffffff; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.15);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
@@ -1502,7 +1502,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 }
 .split-content-pane.bg-navy {
   background: var(--navy);
-  --gold: #ffffff; --gold-fg:#0D2B4E;
+  --gold: #ffffff; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.15);
 }
 .split-content-pane.bg-warm {
@@ -1628,7 +1628,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 ============================================================ */
 .cta-strip {
   background: var(--ink);
-  --gold: #7FBDE0; --gold-fg:#0D2B4E;
+  --gold: #C0C0C0; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.12);
   padding: 80px 0;
   position: relative;
@@ -1912,7 +1912,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 }
 .contact-info-pane {
   background: var(--navy);
-  --gold: #ffffff; --gold-fg:#0D2B4E;
+  --gold: #ffffff; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.15);
   padding: 56px 48px;
 }
@@ -2011,7 +2011,7 @@ textarea.form-control { resize: vertical; min-height: 96px; }
 /* ============================================================
    FOOTER
 ============================================================ */
-.footer { background: var(--ink); --gold: #ffffff; --gold-fg:#0D2B4E; --icon-bg: rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+.footer { background: var(--ink); --gold: #ffffff; --gold-fg:#111111; --icon-bg: rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
 .footer-main { padding: 72px 0 48px; }
 .footer-grid {
   display: grid;
@@ -2706,7 +2706,7 @@ p { line-height: 1.85; font-weight: 400; color: var(--gray-600); }
 /* ── Hero sections — refined ────────────────── */
 .page-hero {
   background: var(--navy);
-  --gold: #ffffff; --gold-fg:#0D2B4E;
+  --gold: #ffffff; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.15);
 }
 .page-hero .display { font-size: clamp(2.8rem, 5vw, 4.5rem); }
@@ -2714,15 +2714,15 @@ p { line-height: 1.85; font-weight: 400; color: var(--gray-600); }
 
 /* ── Homepage hero — remove photo, use deep navy gradient ── */
 /* old hero-bg gradient override — removed, using slideshow now */
-.hero { background: #0D2B4E; }
+.hero { background: #111111; }
 /* Accent color override for dark contexts */
-[style*="background:#0D2B4E"],
-[style*="background:#0D2B4E"],
+[style*="background:#111111"],
+[style*="background:#111111"],
 [style*="background:var(--navy)"],
 [style*="background:var(--ink)"],
 [style*="background: var(--navy)"],
 [style*="background: var(--ink)"] {
-  --gold: #ffffff; --gold-fg:#0D2B4E;
+  --gold: #ffffff; --gold-fg:#111111;
   --icon-bg: rgba(255,255,255,.15);
 }
 
@@ -2732,7 +2732,7 @@ p { line-height: 1.85; font-weight: 400; color: var(--gray-600); }
 .feature-bar { width: 2px; min-height: 60px; background: var(--gold); flex-shrink: 0; }
 
 /* ── Stats bar ───────────────────────────────── */
-.stats-bar { background: var(--navy); --gold: #ffffff; --gold-fg:#0D2B4E; border-bottom: none; padding: 36px 0; }
+.stats-bar { background: var(--navy); --gold: #ffffff; --gold-fg:#111111; border-bottom: none; padding: 36px 0; }
 .stat-num { color: var(--white) !important; font-size: 3.2rem !important; }
 .stat-num sup { color: var(--gold) !important; }
 .stat-label { color: rgba(255,255,255,.45) !important; }
@@ -3374,12 +3374,12 @@ p { line-height: 1.75; }
 
         <!-- Handle -->
         <div id="ba-handle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:#ffffff;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:11;cursor:col-resize;box-shadow:0 2px 12px rgba(0,0,0,.3)">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10H14M6 10L3 7M6 10L3 13M14 10L17 7M14 10L17 13" stroke="#0D2B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10H14M6 10L3 7M6 10L3 13M14 10L17 7M14 10L17 13" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
         <!-- Labels -->
         <div style="position:absolute;top:16px;left:20px;z-index:9;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;pointer-events:none">Before</div>
-        <div id="ba-after-label" style="position:absolute;top:16px;right:20px;z-index:9;background:#3A8FD4;color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;pointer-events:none">After</div>
+        <div id="ba-after-label" style="position:absolute;top:16px;right:20px;z-index:9;background:#C0C0C0;color:#111111;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;pointer-events:none">After</div>
 
         <!-- Hint -->
         <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:9;background:rgba(0,0,0,.45);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;white-space:nowrap;pointer-events:none" id="ba-hint">Drag to compare</div>
@@ -3488,7 +3488,7 @@ p { line-height: 1.75; }
   </section>
 
   <!-- REFERRAL PROMO STRIP -->
-  <section style="background:#0D2B4E;padding:0;border-top:1px solid rgba(255,255,255,.08)">
+  <section style="background:#111111;padding:0;border-top:1px solid rgba(255,255,255,.08)">
     <div class="container">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:40px 0;flex-wrap:wrap">
         <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
@@ -3499,7 +3499,7 @@ p { line-height: 1.75; }
             <div style="font-size:14px;color:rgba(255,255,255,.7);margin-top:6px">Refer a friend — get an Amazon gift card the day they place their order. Unlimited referrals.</div>
           </div>
         </div>
-        <button onclick="showPage('referral')" style="background:#ffffff;color:#0D2B4E;border:none;padding:16px 36px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-radius:2px;flex-shrink:0">See How It Works →</button>
+        <button onclick="showPage('referral')" style="background:#ffffff;color:#111111;border:none;padding:16px 36px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-radius:2px;flex-shrink:0">See How It Works →</button>
       </div>
     </div>
   </section>
@@ -3668,7 +3668,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-about" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>About Us</span></div>
@@ -3776,7 +3776,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-windows" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Windows</span></div>
@@ -3949,7 +3949,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-replacement-windows" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Full Replacements</span></div>
@@ -4176,7 +4176,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-hurricane-impact-windows" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Hurricane Impact Windows</span></div>
@@ -4382,7 +4382,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Single-Hung Windows -->
 <div id="page-window-single-hung" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Single-Hung Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -4484,7 +4484,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Double-Hung Windows -->
 <div id="page-window-double-hung" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Double-Hung Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -4582,7 +4582,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Casement Windows -->
 <div id="page-window-casement" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Casement Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -4676,7 +4676,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Awning Windows -->
 <div id="page-window-awning" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Awning Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -4774,7 +4774,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Picture Windows -->
 <div id="page-window-picture" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Picture Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -4876,7 +4876,7 @@ p { line-height: 1.75; }
 
 <!-- WINDOW STYLE: Horizontal Roller Windows -->
 <div id="page-window-horizontal-roller" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('windows')" style="color:rgba(255,255,255,.6);cursor:pointer">Windows</a> <span class="breadcrumb-sep">/</span> <span>Horizontal Roller Windows</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Window Styles</div>
@@ -5000,7 +5000,7 @@ p { line-height: 1.75; }
 
 <div id="page-doors" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Doors</span></div>
@@ -5106,7 +5106,7 @@ p { line-height: 1.75; }
 
 <!-- DOOR STYLE: Sliding Glass Doors -->
 <div id="page-door-sliding-glass" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('doors')" style="color:rgba(255,255,255,.6);cursor:pointer">Doors</a> <span class="breadcrumb-sep">/</span> <span>Sliding Glass Doors</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Door Styles</div>
@@ -5204,7 +5204,7 @@ p { line-height: 1.75; }
 
 <!-- DOOR STYLE: French Doors -->
 <div id="page-door-french" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('doors')" style="color:rgba(255,255,255,.6);cursor:pointer">Doors</a> <span class="breadcrumb-sep">/</span> <span>French Doors</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Door Styles</div>
@@ -5302,7 +5302,7 @@ p { line-height: 1.75; }
 
 <!-- DOOR STYLE: Impact Entry Doors -->
 <div id="page-door-entry" class="page">
-  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#081E38 0%,#1A4A7A 100%);position:relative;padding:0 5vw">
+  <section class="page-hero" style="min-height:460px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;background:linear-gradient(135deg,#0a0a0a 0%,#2a2a2a 100%);position:relative;padding:0 5vw">
     <div style="color:#fff;padding:72px 0">
       <div class="breadcrumb"><a onclick="showPage('home')" style="color:rgba(255,255,255,.6);cursor:pointer">Home</a> <span class="breadcrumb-sep">/</span> <a onclick="showPage('doors')" style="color:rgba(255,255,255,.6);cursor:pointer">Doors</a> <span class="breadcrumb-sep">/</span> <span>Impact Entry Doors</span></div>
       <div class="eyebrow eyebrow-light" style="margin-top:12px">Door Styles</div>
@@ -5399,7 +5399,7 @@ p { line-height: 1.75; }
 
 <div id="page-commercial" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Commercial</span></div>
@@ -5487,7 +5487,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-wholesale" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white;text-align:center;align-items:center">
         <div class="breadcrumb" style="justify-content:center">Home <span class="breadcrumb-sep">/</span> <span>Wholesale</span></div>
@@ -5577,7 +5577,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-contact" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;height:340px">
+  <section class="page-hero" style="background:#111111;height:340px">
     <div class="container" style="width:100%">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Contact</span></div>
@@ -5730,7 +5730,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-blog" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;height:340px">
+  <section class="page-hero" style="background:#111111;height:340px">
     <div class="container" style="width:100%">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Insights &amp; Resources</span></div>
@@ -5833,7 +5833,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-articles" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;height:340px">
+  <section class="page-hero" style="background:#111111;height:340px">
     <div class="container" style="width:100%">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Articles</span></div>
@@ -5896,7 +5896,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-faq" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;height:340px">
+  <section class="page-hero" style="background:#111111;height:340px">
     <div class="container" style="width:100%">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>FAQ</span></div>
@@ -5994,7 +5994,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-brochures" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;height:340px">
+  <section class="page-hero" style="background:#111111;height:340px">
     <div class="container" style="width:100%">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Brochures</span></div>
@@ -6167,7 +6167,7 @@ p { line-height: 1.75; }
 
 <!-- POST: why-boca-raton-homeowners-are-upgrading-to-impact- -->
 <div id="page-post-why_boca_raton_homeowners_are_upgrading_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6197,7 +6197,7 @@ p { line-height: 1.75; }
 
 <!-- POST: protect-your-home-with-hurricane-impact-windows-do -->
 <div id="page-post-protect_your_home_with_hurricane_impact_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6227,7 +6227,7 @@ p { line-height: 1.75; }
 
 <!-- POST: what-boynton-beach-residents-need-to-know-about-hu -->
 <div id="page-post-what_boynton_beach_residents_need_to_kno" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6257,7 +6257,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 4-signs-your-business-needs-new-doors-in-pompano-b -->
 <div id="page-post-4_signs_your_business_needs_new_doors_in" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6287,7 +6287,7 @@ p { line-height: 1.75; }
 
 <!-- POST: do-windows-increase-home-value-in-pompano-beach-fl -->
 <div id="page-post-do_windows_increase_home_value_in_pompan" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6317,7 +6317,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 3-signs-your-fort-lauderdale-fl-home-needs-new-win -->
 <div id="page-post-3_signs_your_fort_lauderdale_fl_home_nee" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6347,7 +6347,7 @@ p { line-height: 1.75; }
 
 <!-- POST: how-to-maximize-the-lifespan-of-your-french-doors- -->
 <div id="page-post-how_to_maximize_the_lifespan_of_your_fre" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6377,7 +6377,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 3-things-to-consider-about-restaurant-windows-in-p -->
 <div id="page-post-3_things_to_consider_about_restaurant_wi" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6407,7 +6407,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 5-signs-you-need-new-windows-in-hollywood-fl -->
 <div id="page-post-5_signs_you_need_new_windows_in_hollywoo" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6437,7 +6437,7 @@ p { line-height: 1.75; }
 
 <!-- POST: reasons-architectural-windows-are-great-in-pompano -->
 <div id="page-post-reasons_architectural_windows_are_great_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6467,7 +6467,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 5-benefits-of-new-windows-for-your-home-in-pompano -->
 <div id="page-post-5_benefits_of_new_windows_for_your_home_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6497,7 +6497,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 4-reasons-to-upgrade-your-commercial-doors-in-boyn -->
 <div id="page-post-4_reasons_to_upgrade_your_commercial_doo" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6527,7 +6527,7 @@ p { line-height: 1.75; }
 
 <!-- POST: protect-your-business-with-impact-rated-doors -->
 <div id="page-post-protect_your_business_with_impact_rated_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6557,7 +6557,7 @@ p { line-height: 1.75; }
 
 <!-- POST: reasons-to-invest-in-new-fiberglass-entry-doors -->
 <div id="page-post-reasons_to_invest_in_new_fiberglass_entr" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('blog')">Insights &amp; Resources</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6587,7 +6587,7 @@ p { line-height: 1.75; }
 
 <!-- POST: how-to-choose-the-right-door-for-your-home-in-fort -->
 <div id="page-post-how_to_choose_the_right_door_for_your_ho" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6617,7 +6617,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 7-questions-to-ask-your-window-installer-in-pompan -->
 <div id="page-post-7_questions_to_ask_your_window_installer" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6647,7 +6647,7 @@ p { line-height: 1.75; }
 
 <!-- POST: how-windows-and-doors-impact-energy-efficiency -->
 <div id="page-post-how_windows_and_doors_impact_energy_effi" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6677,7 +6677,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 6-benefits-of-fiberglass-doors-in-west-palm-beach- -->
 <div id="page-post-6_benefits_of_fiberglass_doors_in_west_p" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6707,7 +6707,7 @@ p { line-height: 1.75; }
 
 <!-- POST: 4-tips-for-prepping-your-home-for-hurricane-season -->
 <div id="page-post-4_tips_for_prepping_your_home_for_hurric" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6737,7 +6737,7 @@ p { line-height: 1.75; }
 
 <!-- POST: hurricane-impact-windows-offer-a-wealth-of-benefit -->
 <div id="page-post-hurricane_impact_windows_offer_a_wealth_" class="page">
-  <section class="page-hero" style="background:#0D2B4E;height:360px">
+  <section class="page-hero" style="background:#111111;height:360px">
     <div class="container">
       <div class="page-hero-content">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <a style="cursor:pointer;color:var(--gold);text-decoration:none;" onclick="showPage('articles')">Articles</a> <span class="breadcrumb-sep">/</span> Article</div>
@@ -6773,7 +6773,7 @@ p { line-height: 1.75; }
 <div id="page-specials" class="page">
 
   <!-- HERO -->
-  <section class="page-hero" style="background:#0D2B4E;height:420px;text-align:center">
+  <section class="page-hero" style="background:#111111;height:420px;text-align:center">
     <div class="container" style="width:100%">
       <div class="page-hero-content" style="margin:0 auto;text-align:center">
         <div class="breadcrumb" style="justify-content:center">Home <span class="breadcrumb-sep">/</span> <span>Special Savings</span></div>
@@ -6901,7 +6901,7 @@ p { line-height: 1.75; }
 <div id="page-service-areas" class="page">
 
   <!-- HERO -->
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
     <div style="display:contents">
       <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 56px calc(5vw + 16px);color:white">
         <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Service Areas</span></div>
@@ -6987,7 +6987,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-boca-raton" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -7200,7 +7200,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-coral-springs" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -7413,7 +7413,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-boynton-beach" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -7626,7 +7626,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-pompano-beach" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -7839,7 +7839,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-fort-lauderdale" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -8052,7 +8052,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-hollywood" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -8265,7 +8265,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-west-palm-beach" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -8478,7 +8478,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-deerfield-beach" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -8691,7 +8691,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-delray-beach" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -8904,7 +8904,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-sa-lake-worth" class="page">
 
-  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:580px;overflow:hidden;display:grid;grid-template-columns:62% 38%;background:#111111;position:relative">
 
     <div style="display:contents">
 
@@ -9117,7 +9117,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-our-work" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;padding:80px 0 60px">
+  <section class="page-hero" style="background:#111111;padding:80px 0 60px">
     <div class="container">
       <div class="page-hero-content" style="max-width:700px">
         <div class="eyebrow eyebrow-light">Portfolio</div>
@@ -9230,7 +9230,7 @@ p { line-height: 1.75; }
 <div id="page-financing" class="page">
 
   <!-- HERO -->
-  <section class="page-hero" style="height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0D2B4E;position:relative">
+  <section class="page-hero" style="height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#111111;position:relative">
     <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 48px;color:white;max-width:760px">
       <div class="breadcrumb">Home <span class="breadcrumb-sep">/</span> <span>Financing</span></div>
       <div class="eyebrow eyebrow-light" style="margin-bottom:14px">Payment Options</div>
@@ -9246,7 +9246,7 @@ p { line-height: 1.75; }
       <div style="max-width:860px;margin:0 auto">
 
         <div style="text-align:center;margin-bottom:40px">
-          <div style="display:inline-block;background:#fff;border:1px solid var(--gray-100);border-top:3px solid var(--gold);padding:16px 32px"><span style="font-family:'Montserrat', sans-serif;font-size:16px;font-weight:800;color:#0D2B4E;letter-spacing:-.02em">Service Finance</span><span style="font-family:'Montserrat', sans-serif;font-size:16px;font-weight:400;color:#0D2B4E"> Company</span></div>
+          <div style="display:inline-block;background:#fff;border:1px solid var(--gray-100);border-top:3px solid var(--gold);padding:16px 32px"><span style="font-family:'Montserrat', sans-serif;font-size:16px;font-weight:800;color:#111111;letter-spacing:-.02em">Service Finance</span><span style="font-family:'Montserrat', sans-serif;font-size:16px;font-weight:400;color:#111111"> Company</span></div>
         </div>
 
         <h2 class="display" style="color:var(--navy);text-align:center;margin-bottom:8px">Apply today, take time to pay.</h2>
@@ -9375,7 +9375,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-reviews" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;padding:80px 0 60px">
+  <section class="page-hero" style="background:#111111;padding:80px 0 60px">
     <div class="container">
       <div class="page-hero-content" style="max-width:700px">
         <div class="eyebrow eyebrow-light">What Our Clients Say</div>
@@ -9476,7 +9476,7 @@ p { line-height: 1.75; }
            style="display:flex;align-items:center;gap:12px;background:#fff;color:var(--navy);padding:16px 28px;text-decoration:none;font-family:'Montserrat', sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:transform .2s,box-shadow .2s;"
            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.25)'"
            onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <span style="width:28px;height:28px;background:#0D2B4E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0">G</span>
+          <span style="width:28px;height:28px;background:#111111;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0">G</span>
           Review on Google
         </a>
       </div>
@@ -9500,7 +9500,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-employment" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;padding:80px 0 60px">
+  <section class="page-hero" style="background:#111111;padding:80px 0 60px">
     <div class="container">
       <div class="page-hero-content" style="max-width:700px">
         <div class="eyebrow eyebrow-light">Join Our Team</div>
@@ -9726,7 +9726,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-privacy" class="page">
 
-  <section style="background:#0D2B4E;padding:60px 0 40px">
+  <section style="background:#111111;padding:60px 0 40px">
     <div class="container">
       <h2 style="color:#fff;font-size:2rem;margin:0 0 8px">Privacy Policy</h2>
       <p style="color:rgba(255,255,255,.65);margin:0">Effective Date: January 1, 2024</p>
@@ -9773,7 +9773,7 @@ p { line-height: 1.75; }
 ============================================================ -->
 <div id="page-accessibility" class="page">
 
-  <section style="background:#0D2B4E;padding:60px 0 40px">
+  <section style="background:#111111;padding:60px 0 40px">
     <div class="container">
       <h2 style="color:#fff;font-size:2rem;margin:0 0 8px">Accessibility Statement</h2>
       <p style="color:rgba(255,255,255,.65);margin:0">South Florida Windows &amp; Doors</p>
@@ -9817,7 +9817,7 @@ p { line-height: 1.75; }
      ============================================================ -->
 <div id="page-referral" class="page">
 
-  <section class="page-hero" style="background:#0D2B4E;text-align:center">
+  <section class="page-hero" style="background:#111111;text-align:center">
     <div class="container" style="width:100%">
       <div class="page-hero-content" style="margin:0 auto;text-align:center">
         <div class="breadcrumb" style="justify-content:center">Home <span class="breadcrumb-sep">/</span> <span>Referral Program</span></div>
@@ -9828,7 +9828,7 @@ p { line-height: 1.75; }
   </section>
 
   <!-- TICKER BANNER -->
-  <div style="background:#0D2B4E;padding:14px 0;text-align:center">
+  <div style="background:#111111;padding:14px 0;text-align:center">
     <p style="margin:0;font-size:14px;font-weight:600;color:#ffffff;letter-spacing:.06em;text-transform:uppercase">
       Earn 1% of their job &nbsp;·&nbsp; Up to $500 Amazon gift card per contract &nbsp;·&nbsp; Unlimited referrals — no cap
     </p>
@@ -9847,7 +9847,7 @@ p { line-height: 1.75; }
         <button class="btn btn-outline-dark" onclick="document.getElementById('ref-how').scrollIntoView({behavior:'smooth'})">See How It Works</button>
       </div>
     </div>
-    <div class="split-img-pane" style="background:#0D2B4E;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:72px 56px;gap:32px;--gold:#ffffff">
+    <div class="split-img-pane" style="background:#111111;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:72px 56px;gap:32px;--gold:#ffffff">
       <!-- Earnings showcase -->
       <div style="text-align:center;color:var(--white)">
         <div style="font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:8px">You earn</div>
@@ -10043,7 +10043,7 @@ p { line-height: 1.75; }
   <style>
     #page-review {
       min-height: 100vh;
-      background: linear-gradient(160deg, #0D2B4E 0%, #0D2B4E 60%, #2A2A2A 100%);
+      background: linear-gradient(160deg, #111111 0%, #111111 60%, #2A2A2A 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -10056,14 +10056,14 @@ p { line-height: 1.75; }
       box-shadow: 0 32px 80px rgba(0,0,0,.4);
     }
     .rv-header {
-      background: #0D2B4E;
+      background: #111111;
       padding: 40px 40px 32px;
       text-align: center;
       border-bottom: 2px solid #000000;
     }
     .rv-eyebrow {
       font-size: 10px; font-weight: 600; letter-spacing: .18em;
-      text-transform: uppercase; color: #3A8FD4; margin-bottom: 14px;
+      text-transform: uppercase; color: #C0C0C0; margin-bottom: 14px;
     }
     .rv-stars-display { font-size: 26px; letter-spacing: 4px; margin-bottom: 14px; }
     .rv-title {
@@ -10071,19 +10071,19 @@ p { line-height: 1.75; }
       font-size: 30px; font-weight: 400; color: #fff;
       line-height: 1.15; margin-bottom: 6px;
     }
-    .rv-title em { font-style: normal; color: #3A8FD4; display: block; }
+    .rv-title em { font-style: normal; color: #C0C0C0; display: block; }
     .rv-sub { font-size: 13px; font-weight: 400; color: rgba(255,255,255,.5); line-height: 1.6; }
     .rv-body { padding: 44px 40px; background: #FAFAF8; }
     .rv-screen { display: none; }
     .rv-screen.active { display: block; }
     .rv-step-eye {
       font-size: 10px; font-weight: 600; letter-spacing: .18em;
-      text-transform: uppercase; color: #3A8FD4;
+      text-transform: uppercase; color: #C0C0C0;
       text-align: center; margin-bottom: 8px;
     }
     .rv-step-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px; font-weight: 400; color: #0D2B4E;
+      font-size: 22px; font-weight: 400; color: #111111;
       text-align: center; margin-bottom: 32px; line-height: 1.3;
     }
     .rv-rating-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
@@ -10093,7 +10093,7 @@ p { line-height: 1.75; }
       filter: grayscale(1) opacity(.3); line-height: 1;
     }
     .rv-star:hover, .rv-star.lit { filter: none; transform: scale(1.15); }
-    .rv-gold-rule { width: 40px; height: 1px; background: #3A8FD4; margin: 20px auto; border: none; }
+    .rv-gold-rule { width: 40px; height: 1px; background: #C0C0C0; margin: 20px auto; border: none; }
     .rv-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       width: 100%; padding: 14px 32px;
@@ -10101,15 +10101,15 @@ p { line-height: 1.75; }
       letter-spacing: .12em; text-transform: uppercase;
       cursor: pointer; border: none; transition: all .25s; text-decoration: none;
     }
-    .rv-btn-gold { background: #3A8FD4; color: #fff; }
+    .rv-btn-gold { background: #C0C0C0; color: #fff; }
     .rv-btn-gold:hover { background: #1a1a1a; }
     .rv-btn-gold.disabled { opacity: .35; pointer-events: none; }
-    .rv-btn-navy { background: #0D2B4E; color: #fff; }
+    .rv-btn-navy { background: #111111; color: #fff; }
     .rv-btn-navy:hover { background: #2A2A2A; }
     .rv-icon { font-size: 48px; text-align: center; margin-bottom: 12px; }
     .rv-screen-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 26px; font-weight: 400; color: #0D2B4E;
+      font-size: 26px; font-weight: 400; color: #111111;
       text-align: center; margin-bottom: 8px; line-height: 1.2;
     }
     .rv-screen-sub {
@@ -10118,7 +10118,7 @@ p { line-height: 1.75; }
     }
     .rv-g-btn {
       display: flex; align-items: center; justify-content: center; gap: 12px;
-      background: #3A8FD4; color: #fff;
+      background: #C0C0C0; color: #fff;
       font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
       letter-spacing: .12em; text-transform: uppercase;
       text-decoration: none; padding: 16px 28px; margin-bottom: 10px;
@@ -10128,22 +10128,22 @@ p { line-height: 1.75; }
     .rv-g-icon {
       background: #fff; border-radius: 50%; width: 26px; height: 26px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 700; color: #0D2B4E; flex-shrink: 0;
+      font-size: 15px; font-weight: 700; color: #111111; flex-shrink: 0;
     }
     .rv-btn-note { font-size: 11px; color: #A0A0A0; text-align: center; margin-top: 8px; }
     .rv-form { display: flex; flex-direction: column; gap: 16px; }
     .rv-form-field label {
       display: block; font-size: 10px; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase; color: #0D2B4E; margin-bottom: 6px;
+      letter-spacing: .12em; text-transform: uppercase; color: #111111; margin-bottom: 6px;
     }
     .rv-form-field input, .rv-form-field textarea {
       width: 100%; border: 1px solid #EAEAE6; padding: 12px 14px;
       font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400;
-      color: #0D2B4E; background: #FAFAF8; outline: none;
+      color: #111111; background: #FAFAF8; outline: none;
       transition: border-color .2s; resize: none;
     }
     .rv-form-field input:focus, .rv-form-field textarea:focus {
-      border-color: #3A8FD4; background: #fff;
+      border-color: #C0C0C0; background: #fff;
     }
     .rv-contact-box {
       background: #F0F0F0; border: 1px solid #EAEAE6;
@@ -10152,10 +10152,10 @@ p { line-height: 1.75; }
     .rv-contact-box p { font-size: 13px; font-weight: 400; color: #606060; margin-bottom: 8px; }
     .rv-contact-box a {
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px; font-weight: 600; color: #0D2B4E; text-decoration: none;
+      font-size: 20px; font-weight: 600; color: #111111; text-decoration: none;
     }
     .rv-footer {
-      background: #0D2B4E; padding: 16px 40px; text-align: center;
+      background: #111111; padding: 16px 40px; text-align: center;
       border-top: 1px solid rgba(255,255,255,.06);
     }
     .rv-footer p { font-size: 10px; letter-spacing: .06em; color: rgba(255,255,255,.25); }
@@ -10496,13 +10496,13 @@ document.addEventListener('click', function(e) {
 
 
   <!-- ═══ Sticky Mobile Call Bar ═══ -->
-  <div id="sticky-call-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#081E38;border-top:2px solid rgba(255,255,255,.25);padding:12px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.25)">
+  <div id="sticky-call-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a0a0a;border-top:2px solid rgba(255,255,255,.25);padding:12px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.25)">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:500px;margin:0 auto">
       <div>
         <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);font-weight:600">Free Estimate · No Pressure</div>
         <div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:1px">Licensed &amp; Insured · 30+ Years South Florida</div>
       </div>
-      <a href="tel:+19548330092" onclick="trackPhoneClick('sticky_mobile_bar')" style="background:#ffffff;color:#0D2B4E;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border-radius:3px;text-decoration:none;white-space:nowrap;flex-shrink:0">
+      <a href="tel:+19548330092" onclick="trackPhoneClick('sticky_mobile_bar')" style="background:#ffffff;color:#111111;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border-radius:3px;text-decoration:none;white-space:nowrap;flex-shrink:0">
         Call Now
       </a>
     </div>
