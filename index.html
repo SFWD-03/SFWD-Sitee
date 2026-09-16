@@ -1119,8 +1119,8 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
 .nav-right a:hover { color: #fff; }
 .nav-right a:hover::after { transform: scaleX(1); }
 .nav-cta-btn {
-  background: #C9A84C;
-  color: #fff !important;
+  background: #C0C0C0;
+  color: #111111 !important;
   border: none;
   cursor: pointer;
   padding: 8px 16px;
@@ -1134,7 +1134,7 @@ h3.display { font-size: 1.4rem; font-weight: 700; }
   margin-left: 10px;
   white-space: nowrap;
 }
-.nav-cta-btn:hover { background: #b8963d; }
+.nav-cta-btn:hover { background: #e0e0e0; }
 .nav-phone-sm {
   font-size: 12px;
   font-weight: 600;
@@ -2274,8 +2274,10 @@ a.footer-phone:hover { color: var(--gold); opacity: .8; }
   .logo-sub { display: none; }
 
   /* Hero */
-  .hero { padding: 80px 0 60px; min-height: auto; }
-  .hero-content { max-width: 100%; }
+  .hero { padding: 60px 0 50px; min-height: auto; }
+  .hero-content { max-width: 100%; padding: 40px 0 !important; }
+  .hero-logo-right { display: none !important; }
+  .hero [style*="grid-template-columns:1fr auto"] { grid-template-columns: 1fr !important; }
 
   /* Hero creds bar: give it a solid navy bg so white text shows on mobile */
   .hero-creds { background: var(--navy) !important; border-top: 1px solid rgba(255,255,255,.15) !important; }
@@ -3194,71 +3196,55 @@ p { line-height: 1.75; }
 
   <!-- HERO -->
   <div style="position:relative">
-    <section class="hero">
+    <section class="hero" style="background:linear-gradient(160deg,#0a0a0a 0%,#1a1a1a 60%,#0a0a0a 100%);min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden">
 
-      <!-- HERO SLIDESHOW -->
-      <div id="hero-slides" aria-hidden="true">
-        <div class="hero-slide active" style="background-image:url('pexels-jeffrey-eisen-1257101-37485070.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('house-hero.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('pool-hero.jpg')"></div>
-        <div class="hero-slide hero-slide-referral">
-          <div class="ref-slide-inner">
-            <div class="ref-slide-content">
-              <div class="ref-slide-eyebrow">Referral Program</div>
-              <h2 class="ref-slide-heading">Earn Amazon Gift Cards<br/>When You Refer a Friend</h2>
-              <div class="ref-slide-rule"></div>
-              <div class="ref-slide-body">Share our name with friends, family, or neighbors — and earn 1% of their job as an Amazon gift card the day their order is placed. No limit on referrals.</div>
-              <div style="display:flex;gap:24px;margin-bottom:26px;flex-wrap:wrap">
-                <div style="text-align:center">
-                  <div style="font-size:clamp(20px,2.8vw,32px);font-weight:800;color:#fff;font-family:var(--font-head)">$65</div>
-                  <div style="font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase">$6,500 job</div>
-                </div>
-                <div style="width:1px;background:rgba(255,255,255,.15);align-self:stretch"></div>
-                <div style="text-align:center">
-                  <div style="font-size:clamp(20px,2.8vw,32px);font-weight:800;color:#C8932A;font-family:var(--font-head)">$500</div>
-                  <div style="font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase">Max per contract</div>
-                </div>
-                <div style="width:1px;background:rgba(255,255,255,.15);align-self:stretch"></div>
-                <div style="text-align:center">
-                  <div style="font-size:clamp(20px,2.8vw,32px);font-weight:800;color:#fff;font-family:var(--font-head)">∞</div>
-                  <div style="font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase">Unlimited referrals</div>
-                </div>
-              </div>
-              <div class="ref-slide-cta">
-                <button class="ref-slide-btn" onclick="showPage('referral')">See Full Details</button>
-              </div>
-            </div>
-            <div class="ref-slide-logo" style="text-align:center">
-              <img src="referral-qr.png" alt="Referral QR Code" style="width:clamp(120px,16vw,200px);display:block;margin:0 auto;border-radius:6px">
-              <div style="margin-top:10px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Scan to refer</div>
-            </div>
-          </div>
-        </div>
+      <!-- Silver diagonal accent lines (CSS only, brand feel) -->
+      <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+        <div style="position:absolute;top:-20%;right:-5%;width:55%;height:140%;background:linear-gradient(135deg,transparent 0%,rgba(192,192,192,.03) 40%,rgba(192,192,192,.06) 50%,rgba(192,192,192,.03) 60%,transparent 100%);transform:skewX(-8deg)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,192,192,.2) 30%,rgba(192,192,192,.2) 70%,transparent)"></div>
       </div>
 
-      <!-- Overlay -->
-      <div class="hero-overlay"></div>
+      <div class="container" style="width:100%;position:relative;z-index:2">
+        <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px">
 
-      <!-- Prev / Next arrows -->
-      <button class="hero-arrow hero-arrow-prev" onclick="heroStep(-1)" aria-label="Previous slide">&#8249;</button>
-      <button class="hero-arrow hero-arrow-next" onclick="heroStep(1)"  aria-label="Next slide">&#8250;</button>
-
-      <!-- Dot indicators -->
-      <div id="hero-dots">
-        <button class="hero-dot active" onclick="heroGo(0)" aria-label="Slide 1"></button>
-        <button class="hero-dot" onclick="heroGo(1)" aria-label="Slide 2"></button>
-        <button class="hero-dot" onclick="heroGo(2)" aria-label="Slide 3"></button>
-        <button class="hero-dot" onclick="heroGo(3)" aria-label="Slide 4"></button>
-      </div>
-      <div class="container" style="width:100%">
-        <div class="hero-content">
-          <div class="eyebrow eyebrow-light">Licensed · Insured · Serving South Florida for 30+ Years</div>
-          <h1 class="display"><em>Supplier &amp; Installer for South Florida Homes &amp; Businesses</em></h1>
-          <p>Premium hurricane-impact windows and doors for homes and businesses across South Florida. Designed to endure. Built to impress.</p>
-          <div class="hero-actions">
-            <button class="btn btn-gold" onclick="showPage('contact')">Contact Us</button>
-            <button class="btn btn-outline-white" onclick="showPage('windows')">Explore Our Services</button>
+          <!-- Left: headline & CTAs -->
+          <div class="hero-content" style="padding:80px 0">
+            <div class="eyebrow eyebrow-light" style="color:rgba(192,192,192,.7);letter-spacing:.18em">Licensed · Insured · Serving South Florida for 30+ Years</div>
+            <h1 class="display" style="color:#ffffff;font-weight:800;line-height:1.1;margin:16px 0 20px">South Florida's Premier<br/><span style="background:linear-gradient(90deg,#C0C0C0,#e8e8e8,#C0C0C0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Windows &amp; Doors</span></h1>
+            <p style="color:rgba(255,255,255,.65);font-size:clamp(15px,1.6vw,18px);max-width:520px;line-height:1.7;margin-bottom:36px">Hurricane-impact windows and doors for homes and businesses across South Florida. Designed to endure. Built to impress.</p>
+            <div class="hero-actions" style="display:flex;gap:16px;flex-wrap:wrap">
+              <button class="btn" onclick="showPage('contact')" style="background:#C0C0C0;color:#111111;font-weight:700;padding:14px 32px;letter-spacing:.08em;border:none;cursor:pointer">Get a Free Quote</button>
+              <button class="btn" onclick="showPage('windows')" style="background:transparent;color:#C0C0C0;border:1px solid rgba(192,192,192,.5);padding:14px 32px;letter-spacing:.08em;cursor:pointer">Explore Our Services</button>
+            </div>
+            <!-- Trust bar -->
+            <div style="display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(192,192,192,.12);flex-wrap:wrap">
+              <div style="text-align:center">
+                <div style="font-size:22px;font-weight:800;color:#C0C0C0">30+</div>
+                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Years Experience</div>
+              </div>
+              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
+              <div style="text-align:center">
+                <div style="font-size:22px;font-weight:800;color:#C0C0C0">4.7★</div>
+                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Google Rating</div>
+              </div>
+              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
+              <div style="text-align:center">
+                <div style="font-size:22px;font-weight:800;color:#C0C0C0">NOA</div>
+                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Approved Products</div>
+              </div>
+              <div style="width:1px;background:rgba(192,192,192,.12)"></div>
+              <div style="text-align:center">
+                <div style="font-size:22px;font-weight:800;color:#C0C0C0">FL</div>
+                <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Licensed &amp; Insured</div>
+              </div>
+            </div>
           </div>
+
+          <!-- Right: large logo lockup -->
+          <div style="display:flex;align-items:center;justify-content:center;padding:40px 0" class="hero-logo-right">
+            <img src="sfwd-logo-stacked-transparent.png" alt="South Florida Windows &amp; Doors" style="width:clamp(180px,18vw,280px);opacity:.95;filter:drop-shadow(0 0 40px rgba(192,192,192,.15))">
+          </div>
+
         </div>
       </div>
     </section>
