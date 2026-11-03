@@ -3379,6 +3379,178 @@ a{color:inherit}
 
 
 
+  <!-- HOME VALUE QUIZ -->
+  <section class="section" style="background:#0A0A0B;padding:80px 0;">
+    <div class="container" style="max-width:640px;margin:0 auto;padding:0 24px;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div class="eyebrow" style="color:#C9CCD1;">Find Your Fit</div>
+        <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#E4E6EA;letter-spacing:-.02em;margin:12px 0 16px;">What's your home worth protecting?</h2>
+        <p style="color:#9CA3AF;font-size:1rem;max-width:480px;margin:0 auto;">Answer 3 quick questions and we'll recommend the right impact windows for your home.</p>
+      </div>
+
+      <div id="quiz-progress-bar" style="height:4px;background:rgba(255,255,255,.12);border-radius:4px;margin-bottom:40px;overflow:hidden;">
+        <div id="quiz-prog-fill" style="height:100%;background:#fff;border-radius:4px;width:0%;transition:width .3s ease;"></div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="quiz-step" id="qs1" style="display:block;">
+        <div style="font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Step 1 of 3</div>
+        <div style="font-size:22px;font-weight:500;color:#E4E6EA;margin-bottom:24px;">What's your home worth?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <button class="quiz-opt" onclick="quizPick(this,'val','under300')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🏠</div>
+            <div style="font-size:15px;font-weight:500;">Under $300K</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Starter home</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'val','300to600')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🏡</div>
+            <div style="font-size:15px;font-weight:500;">$300K – $600K</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Mid-range home</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'val','600to1m')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🏘️</div>
+            <div style="font-size:15px;font-weight:500;">$600K – $1M</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Upscale home</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'val','over1m')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🏰</div>
+            <div style="font-size:15px;font-weight:500;">$1M+</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Luxury home</div>
+          </button>
+        </div>
+        <div id="qerr1" style="display:none;font-size:13px;color:#f87171;margin-bottom:12px;">Choose a home value to continue.</div>
+        <button onclick="quizNext(1)" style="width:100%;background:#fff;color:#0A0A0B;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;">Next →</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" id="qs2" style="display:none;">
+        <div style="font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Step 2 of 3</div>
+        <div style="font-size:22px;font-weight:500;color:#E4E6EA;margin-bottom:24px;">What matters most to you?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <button class="quiz-opt" onclick="quizPick(this,'priority','protection')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🛡️</div>
+            <div style="font-size:15px;font-weight:500;">Hurricane protection</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Safety first</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'priority','savings')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">💰</div>
+            <div style="font-size:15px;font-weight:500;">Insurance savings</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Lower my bills</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'priority','energy')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🌿</div>
+            <div style="font-size:15px;font-weight:500;">Energy efficiency</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Lower A/C bills</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'priority','aesthetics')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">✨</div>
+            <div style="font-size:15px;font-weight:500;">Curb appeal</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Upgrade the look</div>
+          </button>
+        </div>
+        <div id="qerr2" style="display:none;font-size:13px;color:#f87171;margin-bottom:12px;">Pick your top priority to continue.</div>
+        <button onclick="quizNext(2)" style="width:100%;background:#fff;color:#0A0A0B;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;">Next →</button>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" id="qs3" style="display:none;">
+        <div style="font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Step 3 of 3</div>
+        <div style="font-size:22px;font-weight:500;color:#E4E6EA;margin-bottom:24px;">What type of openings do you have?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <button class="quiz-opt" onclick="quizPick(this,'type','windows')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🪟</div>
+            <div style="font-size:15px;font-weight:500;">Mostly windows</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Single/double hung</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'type','doors')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🚪</div>
+            <div style="font-size:15px;font-weight:500;">Mostly doors</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Entry & sliding</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'type','both')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🏠</div>
+            <div style="font-size:15px;font-weight:500;">Windows & doors</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Full home</div>
+          </button>
+          <button class="quiz-opt" onclick="quizPick(this,'type','notSure')" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;color:#E4E6EA;">
+            <div style="font-size:20px;margin-bottom:8px;">🤷</div>
+            <div style="font-size:15px;font-weight:500;">Not sure</div>
+            <div style="font-size:12px;color:#9CA3AF;margin-top:3px;">Need advice</div>
+          </button>
+        </div>
+        <div id="qerr3" style="display:none;font-size:13px;color:#f87171;margin-bottom:12px;">Select an option to continue.</div>
+        <button onclick="quizShowResult()" style="width:100%;background:#fff;color:#0A0A0B;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;">See my recommendation →</button>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step" id="qsResult" style="display:none;">
+        <div id="quiz-result-content"></div>
+      </div>
+    </div>
+  </section>
+  <script>
+  var quizAnswers = {};
+  document.querySelectorAll('.quiz-opt').forEach(function(btn){
+    btn.addEventListener('mouseenter',function(){ if(!this.classList.contains('quiz-selected')) this.style.borderColor='rgba(255,255,255,.35)'; });
+    btn.addEventListener('mouseleave',function(){ if(!this.classList.contains('quiz-selected')) this.style.borderColor='rgba(255,255,255,.12)'; });
+  });
+  function quizPick(btn, key, val) {
+    var parent = btn.parentElement;
+    parent.querySelectorAll('.quiz-opt').forEach(function(b){
+      b.classList.remove('quiz-selected');
+      b.style.borderColor='rgba(255,255,255,.12)';
+      b.style.background='rgba(255,255,255,.05)';
+    });
+    btn.classList.add('quiz-selected');
+    btn.style.borderColor='#fff';
+    btn.style.background='rgba(255,255,255,.12)';
+    quizAnswers[key] = val;
+  }
+  function quizNext(stepNum) {
+    var key = stepNum === 1 ? 'val' : stepNum === 2 ? 'priority' : 'type';
+    var err = document.getElementById('qerr' + stepNum);
+    if (!quizAnswers[key]) { err.style.display='block'; return; }
+    err.style.display='none';
+    document.getElementById('qs' + stepNum).style.display='none';
+    document.getElementById('qs' + (stepNum+1)).style.display='block';
+    document.getElementById('quiz-prog-fill').style.width = (stepNum/3*100)+'%';
+  }
+  function quizShowResult() {
+    if (!quizAnswers.type) { document.getElementById('qerr3').style.display='block'; return; }
+    document.getElementById('qerr3').style.display='none';
+    document.getElementById('quiz-prog-fill').style.width='100%';
+    var headline='', desc='', products=[];
+    if (quizAnswers.val==='over1m' || quizAnswers.val==='600to1m') {
+      headline='Your home deserves premium protection';
+      desc='For a home of this value, we recommend PGT® WinGuard® impact-resistant windows and doors — the gold standard in South Florida. They provide Category 5 hurricane protection, noise reduction, and can significantly lower your insurance premium.';
+      products=['WinGuard Aluminum Impact','WinGuard Vinyl Impact','EnergyVue Vinyl Impact'];
+    } else if (quizAnswers.priority==='savings' || quizAnswers.priority==='energy') {
+      headline='Impact windows that pay for themselves';
+      desc='Based on your priorities, you\'re a great fit for our energy-efficient impact windows. Most South Florida homeowners save $1,500–$3,000/year on insurance alone after upgrading. We\'ll show you the numbers.';
+      products=['EnergyVue Vinyl Impact','WinGuard Vinyl Impact','Classic Vue Max'];
+    } else {
+      headline='Solid protection at a smart price';
+      desc='You don\'t have to break the bank to protect what matters most. We have PGT® impact solutions that qualify for insurance discounts and meet Miami-Dade hurricane codes — starting at prices that might surprise you.';
+      products=['WinGuard Vinyl Impact','Classic Vue Max','EnergyVue Vinyl Impact'];
+    }
+    var tags = products.map(function(p){ return '<span style="display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 12px;font-size:13px;color:#E4E6EA;margin:4px 4px 4px 0;">✓ '+p+'</span>'; }).join('');
+    document.getElementById('quiz-result-content').innerHTML =
+      '<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:24px;margin-bottom:16px;">' +
+        '<div style="display:inline-block;background:rgba(255,255,255,.15);color:#E4E6EA;font-size:12px;font-weight:500;padding:4px 12px;border-radius:6px;margin-bottom:12px;">Your match</div>' +
+        '<div style="font-size:20px;font-weight:500;color:#fff;margin-bottom:10px;">'+headline+'</div>' +
+        '<div style="font-size:14px;color:#9CA3AF;line-height:1.7;margin-bottom:16px;">'+desc+'</div>' +
+        '<div>'+tags+'</div>' +
+      '</div>' +
+      '<div style="background:#fff;border-radius:12px;padding:24px;text-align:center;">' +
+        '<p style="color:#6B7280;font-size:14px;margin-bottom:12px;">Get a free in-home estimate — no pressure, no obligation.</p>' +
+        '<div style="font-size:24px;font-weight:700;color:#0A0A0B;margin-bottom:16px;">(954) 833-0092</div>' +
+        '<a href="tel:9548330092" style="display:block;width:100%;background:#0A0A0B;color:#fff;border-radius:8px;padding:14px;font-size:15px;font-weight:500;text-decoration:none;box-sizing:border-box;">Call now for a free quote</a>' +
+      '</div>';
+    document.getElementById('qs3').style.display='none';
+    document.getElementById('qsResult').style.display='block';
+  }
+  </script>
+
   <!-- SERVICES INTRO -->
   <section class="section section-warm">
     <div class="container">
